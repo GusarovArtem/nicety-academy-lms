@@ -1,4 +1,4 @@
-package nicety.academy.lms
+package academy
 
 class BootStrap {
 

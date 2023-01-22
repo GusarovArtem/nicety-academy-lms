@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: nicety.academy.lms
+        defaultPackage: academy
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events

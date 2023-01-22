@@ -1,4 +1,4 @@
-package nicety.academy.lms
+package academy
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration
