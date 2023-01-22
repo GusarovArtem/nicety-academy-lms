@@ -1,0 +1,40 @@
+version: "2.2"
+
+services:
+  academy-statics:
+    image: nginx:1.15.4
+    restart: "no"
+    ports:
+      - "8083:80"
+    volumes:
+      - "~/Documents/business/nicety-academy-enterprise/dev/microservices/nicety-academy-lms/envs/local-artem-gusarov/academy.nginx:/etc/nginx/nginx.conf"
+      - "~/Documents/business/nicety-academy-enterprise/dev/academy-statics:/academy-statics"
+    environment:
+      TZ: "Europe/Ukraine"
+
+  postgres:
+    image: postgres:10.5
+    restart: "no"
+    ports:
+      - 5433:5432
+    volumes:
+      - "postgres-data-volume:/etc/postgresql/14/data"
+    environment:
+      TZ: "Europe/Ukraine"
+      DB_EXTENSION: pg_trgm
+      POSTGRES_DB: nicety_academy_lms
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  maildev:
+    image: djfarrelly/maildev
+    restart: "no"
+    command: bin/maildev --web 80 --smtp 1025 --verbose
+    ports:
+      - 8383:80
+      - 1025:1025
+      
+volumes:
+  postgres-data-volume:
+    external: false
+
