@@ -22,7 +22,7 @@ services:
     environment:
       TZ: "Europe/Ukraine"
       DB_EXTENSION: pg_trgm
-      POSTGRES_DB: nicety_academy_lms
+      POSTGRES_DB: academy_lms
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
 

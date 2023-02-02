@@ -122,14 +122,14 @@ dataSource:
     driverClassName: org.h2.Driver
     username: sa
     password: ''
-    url: jdbc:h2:mem:nicety_academy_lms
+    url: jdbc:h2:mem:academy_lms
 
 environments:
     development:
         dataSource:
             driverClassName: org.postgresql.Driver
             dbCreate: update
-            url: jdbc:postgresql://localhost:5433/nicety_academy_lms
+            url: jdbc:postgresql://localhost:5433/academy_lms
             username: postgres
             password: postgres
             #logSql: true
@@ -137,7 +137,7 @@ environments:
         dataSource:
             driverClassName: org.postgresql.Driver
             dbCreate: update
-            url: jdbc:postgresql://postgres:5432/nicety_academy_lms
+            url: jdbc:postgresql://postgres:5432/academy_lms
             username: postgres
             password: p32Z4rj<M,MUl>f
             properties:
@@ -162,7 +162,7 @@ environments:
         dataSource:
             driverClassName: org.postgresql.Driver
             dbCreate: update
-            url: jdbc:postgresql://postgres:5432/nicety_academy_lms
+            url: jdbc:postgresql://postgres:5432/academy_lms
             username: postgres
             password: p32Z4rj<M,MUl>f
             properties:
