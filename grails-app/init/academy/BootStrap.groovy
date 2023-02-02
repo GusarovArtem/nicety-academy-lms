@@ -22,7 +22,7 @@ class BootStrap {
     }
 
     void createSuperAdminIfNotExist() {
-        def superAdminProperties = grailsApplication.config.getProperty('academy.user.super_admin')
+        def superAdminProperties = grailsApplication.config.academy.user.super_admin
 
         domainService.createIfNotExists({ AcademyAdmin.findByEmail(superAdminProperties.email) },
                 {
