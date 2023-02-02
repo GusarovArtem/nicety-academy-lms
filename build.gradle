@@ -35,6 +35,13 @@ configurations {
 }
 
 dependencies {
+    //------------------NOT DEFAULT dependencies--------------------------
+
+    /* Security */
+    implementation 'org.grails.plugins:spring-security-core:5.0.0-RC1'
+
+    //----------------------DEFAULT dependencies--------------------------
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.grails:grails-console"
@@ -89,40 +96,14 @@ bootRun {
     systemProperty springProfilesActive, System.getProperty(springProfilesActive)
 }
 
-tasks.withType(GroovyCompile) {
-    configure(groovyOptions) {
-        forkOptions.jvmArgs = ['-Xmx1024m']
-    }
-}
 
 tasks.withType(Test) {
     useJUnitPlatform()
 }
 
-webdriverBinaries {
-    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
-        chromedriver {
-            version = '2.45.0'
-            fallbackTo32Bit = true
-        }
-        geckodriver '0.30.0'
+
+tasks.withType(GroovyCompile) {
+    configure(groovyOptions) {
+        forkOptions.jvmArgs = ['-Xmx1024m']
     }
-}
-
-tasks.withType(Test) {
-    systemProperty "geb.env", System.getProperty('geb.env')
-    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    if (!System.getenv().containsKey('GITHUB_ACTIONS')) {
-        systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
-        systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
-    } else {
-        systemProperty 'webdriver.chrome.driver', "${System.getenv('CHROMEWEBDRIVER')}/chromedriver"
-        systemProperty 'webdriver.gecko.driver', "${System.getenv('GECKOWEBDRIVER')}/geckodriver"
-    }
-}
-
-
-assets {
-    minifyJs = true
-    minifyCss = true
 }
