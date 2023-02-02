@@ -3,7 +3,7 @@ package academy.user.fields
 import academy.user.AcademySocialMedia
 import academy.user.AcademyUser
 
-class AcademyUserSocialMedia {
+class AcademyUserSocialMedia implements Serializable {
 
     AcademyUser user
 
