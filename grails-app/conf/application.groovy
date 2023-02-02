@@ -1,3 +1,14 @@
+academy {
+    user {
+        super_admin {
+            name = "Artem"
+            surname = "Gusarov"
+            email = "nicety.academy@gmail.com"
+            password = "cbbcc56f20efc1a8713ad014a0"
+        }
+    }
+}
+
 // QUARTZ
 quartz {
     autoStartup = false
