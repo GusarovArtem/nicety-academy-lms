@@ -1,7 +1,8 @@
-import academy.user.security.AcademyUserDetailsService
 
 // Place your Spring DSL code here
 beans = {
-    userDetailsService(AcademyUserDetailsService){ grailsApplication = ref('grailsApplication') }
+    userDetailsService(academy.user.security.AcademyUserDetailsService){
+        grailsApplication = ref('grailsApplication')
+    }
 
 }
