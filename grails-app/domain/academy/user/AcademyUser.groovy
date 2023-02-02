@@ -6,7 +6,7 @@ import academy.user.security.AcademyUserType
 
 class AcademyUser {
 
-    transient springSecurityService
+    def springSecurityService
 
     String name
     String surname
@@ -32,6 +32,10 @@ class AcademyUser {
     boolean accountExpired
     boolean passwordExpired
     boolean accountLocked
+
+    static mapping = {
+        autowire true
+    }
 
     static transients = ['springSecurityService', 'passwordConfirm']
 
@@ -85,9 +89,8 @@ class AcademyUser {
         }
     }
 
-//  TODO inject springSecurityService dependency
     protected void encodePassword() {
-//        password = springSecurityService.encodePassword(password)
+        password = springSecurityService.encodePassword(password)
         passwordConfirm = password
     }
 
