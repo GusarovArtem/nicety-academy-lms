@@ -31,7 +31,9 @@ grails {
 }
 
 //SPRING SECURITY
-grails.plugin.springsecurity.userLookup.usernamePropertyName = 'email'
+
+// in current version spring-security the username property might not be override-able
+//grails.plugin.springsecurity.userLookup.usernamePropertyName = 'email'
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'academy.user.AcademyUser'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'academy.user.security.AcademyUserRole'
 grails.plugin.springsecurity.authority.className = 'academy.user.security.AcademyRole'
@@ -55,11 +57,12 @@ grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.logout.alwaysUseDefaultTargetUrl = true
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-        [pattern: '/', access: ['permitAll']],
+        [pattern: '/', access: ['ROLE_ADMIN']],
+//        [pattern: '/', access: ['permitAll']],
         [pattern: '/login/**', access: ['permitAll']],
         [pattern: '/logout/**', access: ['permitAll']],
         [pattern: '/error', access: ['permitAll']],
-        [pattern: '/index', access: ['permitAll']],
+        [pattern: '/index', access: ['ROLE_ADMIN']],
         [pattern: '/index.gsp', access: ['permitAll']],
         [pattern: '/assets/**', access: ['permitAll']],
         [pattern: '/static/**', access: ['permitAll']],
@@ -80,14 +83,14 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/api/ticket', access: ['permitAll']],
         [pattern: '/api/ticket/**', access: ['permitAll']],
 
-        [pattern: '/grails/**', access: ['ROLE_SUPER_ADMIN']],
-        [pattern: '/console/**', access: ['ROLE_SUPER_ADMIN']],
-        [pattern: '/static/console/**', access: ['ROLE_SUPER_ADMIN']],
+        [pattern: '/grails/**', access: ['ROLE_ADMIN']],
+        [pattern: '/console/**', access: ['ROLE_ADMIN']],
+        [pattern: '/static/console/**', access: ['ROLE_ADMIN']],
 
-        [pattern: '/dbconsole/**', access: ['ROLE_SUPER_ADMIN']],
-        [pattern: '/platform/**', access: ['ROLE_SUPER_ADMIN']],
-        [pattern: '/buildInfo/**', access: ['ROLE_SUPER_ADMIN']],
-        [pattern: '/monitoring/**', access: ['ROLE_SUPER_ADMIN']],
+        [pattern: '/dbconsole/**', access: ['ROLE_ADMIN']],
+        [pattern: '/platform/**', access: ['ROLE_ADMIN']],
+        [pattern: '/buildInfo/**', access: ['ROLE_ADMIN']],
+        [pattern: '/monitoring/**', access: ['ROLE_ADMIN']],
 ]
 
 grails.plugin.console.csrfProtection.enabled = false
