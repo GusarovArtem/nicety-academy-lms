@@ -1,5 +1,8 @@
 package academy
 
+import academy.user.security.AcademyRole
+import academy.user.security.AcademyUserRole
+import academy.user.security.AcademyUserType
 import academy.user.staff.AcademyAdmin
 
 class BootStrap {
@@ -12,7 +15,8 @@ class BootStrap {
 
         log.info 'BOOTSTRAPPING start'
 
-        createSuperAdminIfNotExist()
+        createAcademyRolesIfNotExist()
+        createSuperAdminIfNotExists()
 
         log.info 'BOOTSTRAPPING end'
 
@@ -21,20 +25,40 @@ class BootStrap {
     def destroy = {
     }
 
-    void createSuperAdminIfNotExist() {
-        def superAdminProperties = grailsApplication.config.academy.user.super_admin
+    private void createAcademyRolesIfNotExist() {
+        createAcademyRoleIfNotExists(AcademyUserType.SYSTEM_USER)
+        createAcademyRoleIfNotExists(AcademyUserType.ADMIN)
+    }
 
-        domainService.createIfNotExists({ AcademyAdmin.findByEmail(superAdminProperties.email) },
-                {
-                    new AcademyAdmin(
+    private void createAcademyRoleIfNotExists(AcademyUserType userType) {
+        domainService.createIfNotExists(
+                { AcademyRole.findByAuthority(userType.role) },
+                { new AcademyRole(authority: userType.role) }
+        )
+    }
+
+    private void createSuperAdminIfNotExists() {
+        def SUPER_ADMIN = grailsApplication.config.academy.user.super_admin
+        AcademyAdmin admin
+
+        domainService.createAllIfNotExist(
+                { AcademyAdmin.findByEmail(SUPER_ADMIN.email) },
+                [
+                    {
+                        admin = new AcademyAdmin(
                             createdOn: new Date(),
-                            name     : superAdminProperties.name,
-                            surname  : superAdminProperties.surname,
-                            email    : superAdminProperties.email,
-                            password : superAdminProperties.password,
-                            passwordConfirm: superAdminProperties.password
-                    )
-                })
+                            name     : SUPER_ADMIN.name,
+                            surname  : SUPER_ADMIN.surname,
+                            email    : SUPER_ADMIN.email,
+                            password : SUPER_ADMIN.password,
+                            passwordConfirm: SUPER_ADMIN.password
+                         )
+                    },
+                    {
+                        new AcademyUserRole(admin, AcademyRole.findByAuthority(AcademyUserType.ADMIN.role))
+                    }
+                ]
+        )
     }
 
 }

@@ -15,5 +15,10 @@ class AcademyUserRole implements Serializable {
         user nullable: true, unique: true
         role nullable: true
     }
+
+    AcademyUserRole(AcademyUser user, AcademyRole role) {
+        this.user = user
+        this.role = role
+    }
 }
 

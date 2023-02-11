@@ -17,4 +17,11 @@ class DomainService {
         model
     }
 
+    @Transactional
+    List createAllIfNotExist(Supplier existingFinder, List newInstances) {
+        newInstances.findResults {
+            newInstance -> createIfNotExists(existingFinder, newInstance)
+        }
+    }
+
 }
