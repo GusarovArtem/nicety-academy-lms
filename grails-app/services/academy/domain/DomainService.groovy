@@ -1,4 +1,4 @@
-package academy.commons
+package academy.domain
 
 import grails.gorm.transactions.Transactional
 import org.grails.datastore.gorm.GormEntity
