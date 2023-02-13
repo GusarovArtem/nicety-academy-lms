@@ -39,13 +39,11 @@
                 </g:if>
                 <div style="display: flex; justify-content: space-between; align-items: center">
 
-                    %{--  TODO add remember me  --}%
-                    %{--                        <div style="display: flex; align-items: center">--}%
-                    %{--                            <academyComponents:checkbox name="${rememberMeParameter}"--}%
-                    %{--                                                        value="${hasCookie}"--}%
-                    %{--                                                        label="${g.message(--}%
-                    %{--                                                                code: 'springSecurity.login.remember.me.label')}"/>--}%
-                    %{--                        </div>--}%
+                    <div style="display: flex; align-items: center">
+                        <academyComponents:checkbox name="${rememberMeParameter}"
+                                                    value="${hasCookie}"
+                                                    label="${g.message(code: 'springSecurity.login.remember.me.label')}"/>
+                    </div>
 
                     <input class="btn btn-success" type="submit" name="commit"
                            value="${message(code: "springSecurity.login.button")}">
