@@ -72,6 +72,10 @@ class AcademyUser {
         englishLevel nullable: true
     }
 
+    String fullname() {
+        name + " " + surname
+    }
+
     Set<AcademyRole> authorities() {
         AcademyUserRole.findAllByUser(this).collect { it.role } as Set
     }
@@ -86,7 +90,7 @@ class AcademyUser {
     }
 
     def beforeUpdate() {
-        if (password != null && passwordConfirm != null && isDirty('password') && validate()) {
+        if (password != null && isDirty('password') && validate()) {
             encodePassword()
         }
     }
