@@ -3,6 +3,7 @@ package academy.user
 import academy.user.security.AcademyRole
 import academy.user.security.AcademyUserRole
 import academy.user.security.AcademyUserType
+import org.apache.commons.lang3.StringUtils
 
 class AcademyUser {
 
@@ -81,6 +82,7 @@ class AcademyUser {
 
     def beforeInsert() {
         encodePassword()
+        capitalizeName()
     }
 
     def beforeUpdate() {
@@ -92,6 +94,11 @@ class AcademyUser {
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
         passwordConfirm = password
+    }
+
+    protected void capitalizeName() {
+        name = StringUtils.capitalize(name)
+        surname = StringUtils.capitalize(surname)
     }
 
 }
