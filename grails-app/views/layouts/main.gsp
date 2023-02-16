@@ -1,73 +1,68 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>
-        <g:layoutTitle default="Grails"/>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title><g:layoutTitle default="Grails"/></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <asset:stylesheet src="application.css"/>
+    <asset:link rel="shortcut icon" href="logo/company-shortcut-logo.png" type="image/x-icon"/>
+
+    <asset:stylesheet src="tracker-application.css"/>
+
+    <asset:javascript src="tracker-application.js"/>
 
     <g:layoutHead/>
 </head>
 
-<body>
+<body style="display: flex; flex-direction:column; min-height: 100vh">
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top" role="navigation">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/#"><asset:image src="grails.svg" alt="Grails Logo"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" aria-expanded="false" style="height: 0.8px;" id="navbarContent">
-            <ul class="nav navbar-nav ml-auto">
-                <g:pageProperty name="page.nav"/>
-            </ul>
+<div style="flex: 1;">
+
+    <div style="display: flex; justify-content: space-between; background-color: ${grailsApplication.config.tracker.badge_color}">
+        <div>
+            <asset:image alt="" src="logo/company-main-logo.png" style="padding: 10px 20px 10px 100px;"/>
         </div>
     </div>
-</nav>
 
-<g:layoutBody/>
+    <sec:ifLoggedIn>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <g:render template="/menu/main_menu"/>
 
-<div class="footer" role="contentinfo">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <a href="http://guides.grails.org" target="_blank">
-                    <asset:image src="advancedgrails.svg" alt="Grails Guides" class="float-left"/>
-                </a>
-                <strong class="centered"><a href="http://guides.grails.org" target="_blank">Grails Guides</a></strong>
-                <p>Building your first Grails app? Looking to add security, or create a Single-Page-App? Check out the <a href="http://guides.grails.org" target="_blank">Grails Guides</a> for step-by-step tutorials.</p>
+                    <div style="display: flex; flex-direction: row-reverse; padding: 10px 0">
 
+                        <g:set var="academySecurityService" bean="academySecurityService" />
+
+                        <div>
+                            Signed in as <i style="color: green; margin-right: 10px;">
+                    ${academySecurityService.currentUser().fullname()}</i>
+
+                            <g:link controller='logout' style="color: #ff0000; background: #ffffff" class="btn">
+                                <i class="fa fa-sign-out"></i> Sign out
+                            </g:link>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="col">
-                <a href="http://docs.grails.org" target="_blank">
-                    <asset:image src="documentation.svg" alt="Grails Documentation" class="float-left"/>
-                </a>
-                <strong class="centered"><a href="http://docs.grails.org" target="_blank">Documentation</a></strong>
-                <p>Ready to dig in? You can find in-depth documentation for all the features of Grails in the <a href="http://docs.grails.org" target="_blank">User Guide</a>.</p>
+        </nav>
+    </sec:ifLoggedIn>
 
-            </div>
-            <div class="col">
-                <a href="https://slack.grails.org" target="_blank">
-                    <asset:image src="slack.svg" alt="Grails Slack" class="float-left"/>
-                </a>
-                <strong class="centered"><a href="https://slack.grails.org" target="_blank">Join the Community</a></strong>
-                <p>Get feedback and share your experience with other Grails developers in the community <a href="https://slack.grails.org" target="_blank">Slack channel</a>.</p>
-            </div>
-        </div>
-    </div>
+
+
+    <g:layoutBody/>
+
 </div>
 
-<div id="spinner" class="spinner" style="display:none;">
-    <g:message code="spinner.alt" default="Loading&hellip;"/>
-</div>
+<footer>
+    Nicety Academy LMS, created by <a href="https://github.com/GusarovArtem">Gusarov Artem</a>
+</footer>
 
-<asset:javascript src="application.js"/>
+
+<asset:deferredScripts/>
 
 </body>
 </html>

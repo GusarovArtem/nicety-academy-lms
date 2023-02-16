@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="%{--layout--}%" content="%{--main--}%"/>
-    <title>Welcome to Nicety Academy LMS</title>
+    <meta name="layout" content="main">
+    <title>${message(code: 'academy.lms.home.label')}</title>
 </head>
 <body>
 
