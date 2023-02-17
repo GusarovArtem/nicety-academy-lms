@@ -9,12 +9,19 @@
 </head>
 
 <body>
+
+<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
+    <academyButtons:buttonGroup>
+        <academyButtons:create/>
+    </academyButtons:buttonGroup>
+</academyButtons:buttonToolbar>
+
 <div>
     <g:link class="btn btn-success"
             style="color: white; margin: 0 0 10px 20px"
             action="create">
         <i class="fa fa-plus"></i>
-        <g:message code="default.new.label" args="[message(code: entityMessageBase + '.dp.label')]"/>
+        <g:message code="default.new.label" args="[message(code: entityMessageBase + '.label')]"/>
     </g:link>
 </div>
 
@@ -22,7 +29,7 @@
 
     <academyMessages:showFlash flash="${flash}"/>
 
-    <table class="tracker-table">
+    <table class="academy-table">
         <thead>
         <tr>
            <th>Name and Surname</th>

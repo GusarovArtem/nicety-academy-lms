@@ -8,9 +8,7 @@
 
     <asset:link rel="shortcut icon" href="logo/company-shortcut-logo.png" type="image/x-icon"/>
 
-    <asset:stylesheet src="tracker-application.css"/>
-
-    <asset:javascript src="tracker-application.js"/>
+    <asset:stylesheet src="application.css"/>
 
     <g:layoutHead/>
 </head>
@@ -20,7 +18,7 @@
 
 <div style="flex: 1;">
 
-    <div style="display: flex; justify-content: space-between; background-color: ${grailsApplication.config.tracker.badge_color}">
+    <div style="display: flex; justify-content: space-between; background-color: ${grailsApplication.config.academy.badge_color}">
         <div>
             <asset:image alt="" src="logo/company-main-logo.png" style="padding: 10px 20px 10px 100px;"/>
         </div>
