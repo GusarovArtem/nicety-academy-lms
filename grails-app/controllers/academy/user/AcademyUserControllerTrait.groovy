@@ -21,4 +21,9 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
                        userInstanceList : userInstanceList], view: '/user/index'
     }
 
+    def _show(AcademyUser userInstance) {
+        userInstance.clearErrors()
+        render model: [userInstance: userInstance], view: '/user/show'
+    }
+
 }

@@ -16,5 +16,9 @@ class AcademyAdminController implements AcademyUserControllerTrait {
         _index(max)
     }
 
+    def show(AcademyAdmin userInstance) {
+        _show(userInstance)
+    }
+
 }
 

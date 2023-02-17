@@ -50,9 +50,11 @@ dependencies {
     implementation("org.hibernate:hibernate-envers:5.6.14.Final") {
         transitive = false
     }
-
     implementation 'org.dom4j:dom4j:2.1.3' // DocumentFactory error without dependency
     implementation 'xerces:xercesImpl:2.12.2' // Unrecognized feature error without dependency
+
+    /* Dateutil */
+    implementation 'org.codehaus.groovy:groovy-dateutil:3.0.15'
 
 
     //----------------------DEFAULT dependencies--------------------------

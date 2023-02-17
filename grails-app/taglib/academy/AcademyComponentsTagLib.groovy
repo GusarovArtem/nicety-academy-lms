@@ -1,6 +1,6 @@
 package academy
 
-class AcademyComponentsTagLib {
+class AcademyComponentsTagLib implements AcademyTagLibTrait  {
 
     static namespace = "academyComponents"
 
@@ -25,5 +25,54 @@ class AcademyComponentsTagLib {
                 </div>
         """
     }
+
+    def valOrAbsentWithLabel = { attrs, body ->
+        def value = attrs.value
+        if (value instanceof Boolean) {
+            value = value ? "Yes" : "No"
+        } else if (value instanceof Date) {
+            value = value.format('dd-MM-yyyy HH:mm')
+        }
+
+        out << elementWithLabel(attrs) {
+            valOrAbsent(value: value)
+        }
+    }
+
+    def valOrAbsent = { attrs, body ->
+        if (attrs.value) {
+            markup.span(class: attrs.class, style: attrs.style) {
+                mkp.yield attrs.value
+            }
+        } else {
+            out << absent(attrs)
+        }
+    }
+
+    def absent = { attrs, body ->
+        markup.span(class: 'absent', style: attrs.style) {
+            mkp.yield(attrs.label ?: 'Brak')
+        }
+    }
+
+    def elementWithLabel = { attrs, body ->
+        def label = ""
+        if (attrs.label) {
+            label = attrs.label
+        } else if (attrs.messageLabel) {
+            label = g.message(code: attrs.messageLabel)
+        }
+        out << """
+            <div class="">
+                <span class="">
+                    $label
+                </span> 
+                <span class="">
+                    ${body.call()}
+                </span>       
+            </div>
+        """
+    }
+
 
 }
