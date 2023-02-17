@@ -7,7 +7,10 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank
 trait AcademyTagLibTrait {
 
     String randomId() {
-        CommonTagLib.randomId()
+        def uuid = UUID.randomUUID()
+                .toString()
+                .replace("-", "")
+        "academyId_$uuid"
     }
 
     MarkupBuilder getMarkup() {
@@ -17,13 +20,6 @@ trait AcademyTagLibTrait {
     def markup(@DelegatesTo(MarkupBuilder) Closure cls) {
         cls.delegate = internalMarkup(out)
         cls()
-    }
-
-    String unbindedMarkup(@DelegatesTo(MarkupBuilder) Closure cls) {
-        def writer = new StringWriter()
-        cls.delegate = internalMarkup(writer)
-        cls()
-        writer.toString()
     }
 
     MarkupBuilder internalMarkup(output) {

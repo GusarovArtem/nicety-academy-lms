@@ -61,4 +61,42 @@ class AcademyButtonsTagLib implements AcademyTagLibTrait {
         }
     }
 
+    def submitCreate = { attrs, body ->
+        out << submit(attrs + [title: "Utwórz", icon: "plus", class: spacedValues(["btn-success", attrs.class])])
+    }
+
+    def submitSave = { attrs, body ->
+        out << submit(attrs + [title: "Zaktualizuj", icon: "save", class: attrs.class])
+    }
+
+    def submit = { attrs, body ->
+        def elementId = randomId()
+
+        markup.button(id: elementId,
+                type: 'submit',
+                disabled: attrs.disabled,
+                class: spacedValues(['btn btn-primary', attrs.class]),
+                style: attrs.style) {
+            span(class: attrs.labelClass) {
+                i(class: "fa fa-${attrs.icon}", '')
+                mkp.yield " $attrs.title"
+            }
+            mkp.yieldUnescaped body()
+        }
+
+        //language=html
+        if (attrs.confirmation) {
+            out << """
+                    <script>
+                    academyQtipyElementWithConfirmation(
+                        '#${elementId}', 
+                        'javascript:\$("#${elementId}").closest("form").submit()', 
+                        '${attrs.position ?: ''}', 
+                        false, 
+                        '');
+                    </script>
+            """
+        }
+    }
+
 }

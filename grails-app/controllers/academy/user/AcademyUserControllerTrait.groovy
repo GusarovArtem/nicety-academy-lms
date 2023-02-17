@@ -26,4 +26,9 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
         render model: [userInstance: userInstance], view: '/user/show'
     }
 
+    def _create() {
+        render model: [userInstance: targetDomainClass()
+                .newInstance(params)], view: '/user/create'
+    }
+
 }

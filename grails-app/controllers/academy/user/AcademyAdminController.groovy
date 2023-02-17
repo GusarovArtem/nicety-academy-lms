@@ -20,5 +20,8 @@ class AcademyAdminController implements AcademyUserControllerTrait {
         _show(userInstance)
     }
 
+    def create() {
+        _create()
+    }
 }
 
