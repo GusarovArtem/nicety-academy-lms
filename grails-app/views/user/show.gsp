@@ -32,28 +32,28 @@
 
             <ol class="property-list user">
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.name.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.name.label"
                                                         value="${userInstance.name}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.surname.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.surname.label"
                                                         value="${userInstance.surname}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.email.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.email.label"
                                                         value="${userInstance.email}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.createdOn.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.createdOn.label"
                                                         value="${userInstance.createdOn}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.dateOfBirth.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.dateOfBirth.label"
                                                         value="${userInstance.dateOfBirth}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.phoneNumber.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.phoneNumber.label"
                                                         value="${userInstance.phoneNumber}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.englishLevel.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.englishLevel.label"
                                                         value="${userInstance.englishLevel?.label}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="user.location.label"
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.location.label"
                                                         value="${userInstance.location}"/>
 
                 <academyComponents:valOrAbsentWithLabel messageLabel="academyUser.enabled.label"
