@@ -31,13 +31,15 @@ class AcademyButtonsTagLib implements AcademyTagLibTrait {
 
     def create = { attrs, body ->
         out << g.link(controller: attrs.controller,
-                action: "create", class: "btn btn-success", style: "color: white") {
+                action: "create", class: "btn", style: "color: black") {
             """<i class="fa fa-plus"></i> ${attrs.label ?: 'Create'}"""
         }
     }
 
     def edit = { attrs, body ->
-        out << custom(attrs + [action: "edit", icon: "edit", title: "Edit",
+        out << custom(attrs + [action: "edit", icon: "edit",
+                               title: "Edit",
+                               style: "color: black",
                                btnClass: "btn-primary ${attrs.btnClass ?: ''}"], body)
     }
 
@@ -51,7 +53,7 @@ class AcademyButtonsTagLib implements AcademyTagLibTrait {
                 id        : attrs.id,
                 params    : attrs.params,
                 'class'   : "btn ${attrs.btnClass ?: ''}",
-                style     : "color: white; text-decoration: none; ${attrs.style ?: ''}"
+                style     : "color: black; text-decoration: none; ${attrs.style ?: ''}"
         ]
 
         if (attrs.disabled) pars << [disabled: "${attrs.disabled}"]

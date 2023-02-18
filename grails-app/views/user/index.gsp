@@ -16,15 +16,6 @@
     </academyButtons:buttonGroup>
 </academyButtons:buttonToolbar>
 
-<div>
-    <g:link class="btn btn-success"
-            style="color: white; margin: 0 0 10px 20px"
-            action="create">
-        <i class="fa fa-plus"></i>
-        <g:message code="default.new.label" args="[message(code: entityMessageBase + '.label')]"/>
-    </g:link>
-</div>
-
 <div id="list-user" class="content scaffold-list" role="main">
 
     <academyMessages:showFlash flash="${flash}"/>
@@ -41,11 +32,13 @@
         </thead>
         <tbody>
 
-        <g:each in="${userInstanceList}" status="i" var="userInstance">
+        <g:each in="${userInstanceList}" var="userInstance">
             <tr>
-                <td>${userInstance.fullname()}</td>
-                <td>${userInstance.email}</td>
-                <td>${userInstance.createdOn}</td>
+                <td><g:link action="show" id="${userInstance.id}">
+                    ${userInstance.fullname()}
+                </g:link></td>
+                <td>${fieldValue(bean: userInstance, field: "email")}</td>
+                <td>${fieldValue(bean: userInstance, field: "createdOn")}</td>
                 <td>${userInstance.userType.role}</td>
                 <td><g:formatBoolean boolean="${userInstance.enabled}"/></td>
             </tr>

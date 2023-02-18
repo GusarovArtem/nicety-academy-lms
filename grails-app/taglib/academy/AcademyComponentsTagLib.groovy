@@ -51,7 +51,7 @@ class AcademyComponentsTagLib implements AcademyTagLibTrait  {
 
     def absent = { attrs, body ->
         markup.span(class: 'absent', style: attrs.style) {
-            mkp.yield(attrs.label ?: 'Brak')
+            mkp.yield(attrs.label ?: 'None')
         }
     }
 
