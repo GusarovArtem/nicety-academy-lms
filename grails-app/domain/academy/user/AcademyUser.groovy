@@ -1,5 +1,6 @@
 package academy.user
 
+import academy.user.field.AcademyEnglishLevel
 import academy.user.security.AcademyRole
 import academy.user.security.AcademyUserRole
 import academy.user.security.AcademyUserType
