@@ -1,4 +1,4 @@
-package academy.user
+package academy.user.field
 
 enum AcademyEnglishLevel {
 
