@@ -23,5 +23,10 @@ class AcademyAdminController implements AcademyUserControllerTrait {
     def create() {
         _create()
     }
+
+    @Transactional
+    def save(AcademyAdmin userInstance) {
+        _save(userInstance)
+    }
 }
 

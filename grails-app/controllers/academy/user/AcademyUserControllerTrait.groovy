@@ -1,6 +1,7 @@
 package academy.user
 
 import academy.trait.AcademyControllerTrait
+import academy.user.security.AcademyUserRole
 
 trait AcademyUserControllerTrait implements AcademyControllerTrait {
 
@@ -29,6 +30,27 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
     def _create() {
         render model: [userInstance: targetDomainClass()
                 .newInstance(params)], view: '/user/create'
+    }
+
+    def _save(AcademyUser academyUser) {
+        if (!academyUser) {
+            notFound()
+            return
+        }
+
+        academyUser.clearErrors()
+        academyUser.validate()
+
+        if (academyUser.hasErrors()) {
+            render model: [userInstance: academyUser], view: '/user/create'
+            return
+        }
+
+        academyUser.save flush: true
+        AcademyUserRole.create(academyUser, academyUser.userType.role, true)
+
+        showMessage(academyUser.fullname(), "default.created.message")
+        redirect academyUser
     }
 
 }

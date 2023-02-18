@@ -20,5 +20,9 @@ class AcademyUserRole implements Serializable {
         this.user = user
         this.role = role
     }
+
+    static AcademyUserRole create(AcademyUser user, AcademyRole role, boolean flush = false) {
+        new AcademyUserRole(user: user, role: role).save(flush: flush, insert: true)
+    }
 }
 
