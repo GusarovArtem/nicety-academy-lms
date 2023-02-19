@@ -7,7 +7,7 @@ trait AcademyControllerTrait implements WebAttributes {
 
     def targetDomainClass() {}
 
-    void showMessage(String target, String code, String defaultCode) {
+    void showMessage(target, String code, String defaultCode) {
         flash.message =
                 message(code: code,
                         args: [ message(code: GrailsNameUtils.getPropertyName(targetDomainClass()) + '.label',

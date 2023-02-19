@@ -11,8 +11,8 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
     }
 
     @Override
-    void showMessage(String target, String code, String defaultCode = 'User') {
-        super.showMessage(target, code, defaultCode)
+    void showMessage(academyUser, String code, String defaultCode = 'User') {
+        super.showMessage(academyUser.fullname(), code, defaultCode)
     }
 
     def _index(Integer max) {
@@ -50,7 +50,7 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
         academyUser.save flush: true
         AcademyUserRole.create(academyUser, true)
 
-        showMessage(academyUser.fullname(), "default.created.message")
+        showMessage(academyUser, "default.created.message")
         redirect academyUser
     }
 
