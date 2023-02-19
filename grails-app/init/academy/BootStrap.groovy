@@ -3,7 +3,7 @@ package academy
 import academy.user.security.AcademyRole
 import academy.user.security.AcademyUserRole
 import academy.user.security.AcademyUserType
-import academy.user.staff.AcademyAdmin
+import academy.user.staff.administration.AcademyAdmin
 
 class BootStrap {
 
@@ -46,6 +46,7 @@ class BootStrap {
                 [
                     {
                         admin = new AcademyAdmin(
+                            enabled: true,
                             createdOn: new Date(),
                             name     : SUPER_ADMIN.name,
                             surname  : SUPER_ADMIN.surname,

@@ -1,4 +1,4 @@
-package academy.user.staff
+package academy.user.staff.administration
 
 import academy.user.AcademyUser
 import academy.user.security.AcademyUserType
