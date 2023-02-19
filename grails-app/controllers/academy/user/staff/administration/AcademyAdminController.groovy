@@ -33,11 +33,18 @@ class AcademyAdminController implements AcademyUserControllerTrait {
         _edit(userInstance)
     }
 
+    def selfEdit(AcademyAdmin userInstance) {
+        _selfEdit(userInstance)
+    }
+
     @Transactional
     def update(AcademyAdmin userInstance) {
         _update(userInstance)
     }
 
-
+    @Transactional
+    def selfUpdate(AcademyAdmin userInstance) {
+        _selfUpdate(userInstance)
+    }
 }
 
