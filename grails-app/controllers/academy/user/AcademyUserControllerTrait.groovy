@@ -59,8 +59,16 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
         render model: [userInstance: academyUser], view: '/user/edit'
     }
 
+    def _selfEdit(AcademyUser userInstance) {
+        render model: [userInstance: userInstance], view: '/user/self_edit'
+    }
+
     def _update(AcademyUser academyUser) {
         update(userInstance, "edit")
+    }
+
+    def _selfUpdate(AcademyUser userInstance) {
+        update(userInstance, "self_edit")
     }
 
     private update(AcademyUser academyUser, view) {
