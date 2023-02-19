@@ -54,4 +54,32 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
         redirect academyUser
     }
 
+
+    def _edit(AcademyUser academyUser) {
+        render model: [userInstance: academyUser], view: '/user/edit'
+    }
+
+    def _update(AcademyUser academyUser) {
+        update(userInstance, "edit")
+    }
+
+    private update(AcademyUser academyUser, view) {
+        if (academyUser == null) {
+            notFound()
+            return
+        }
+
+        academyUser.validate()
+
+        if (academyUser.hasErrors()) {
+            render model: [userInstance: academyUser], view: view
+            return
+        }
+
+        academyUser.save flush: true
+
+        showMessage(academyUser, 'account.updated')
+        redirect academyUser
+    }
+
 }
