@@ -27,6 +27,7 @@ class BootStrap {
 
     private void createAcademyRolesIfNotExist() {
         createAcademyRoleIfNotExists(AcademyUserType.SYSTEM_USER)
+        createAcademyRoleIfNotExists(AcademyUserType.STUDENT)
         createAcademyRoleIfNotExists(AcademyUserType.TEACHER)
         createAcademyRoleIfNotExists(AcademyUserType.ADMIN)
     }
