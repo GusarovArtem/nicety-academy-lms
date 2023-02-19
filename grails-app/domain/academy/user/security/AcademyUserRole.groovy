@@ -21,7 +21,9 @@ class AcademyUserRole implements Serializable {
         this.role = role
     }
 
-    static AcademyUserRole create(AcademyUser user, AcademyRole role, boolean flush = false) {
+    static AcademyUserRole create(AcademyUser user, boolean flush = false) {
+        def role = AcademyRole.findByAuthority(user.userType.role)
+
         new AcademyUserRole(user: user, role: role).save(flush: flush, insert: true)
     }
 }
