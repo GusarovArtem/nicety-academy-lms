@@ -43,6 +43,12 @@ class AcademyButtonsTagLib implements AcademyTagLibTrait {
                                btnClass: "btn-primary ${attrs.btnClass ?: ''}"], body)
     }
 
+    def show = { attrs, body ->
+        out << g.link(controller: attrs.controller, action: "show", id: attrs.id, class: "btn btn-info", style: "color: white") {
+            """<i class="fa fa-file-text-o"></i> Szczegóły"""
+        }
+    }
+
     def custom = { attrs, body ->
         def pars = [
                 elementId : attrs.elementId,
