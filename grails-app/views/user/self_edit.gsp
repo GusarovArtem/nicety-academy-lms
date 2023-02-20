@@ -14,7 +14,6 @@
     <academyMessages:showFlash flash="${flash}" bean="${userInstance}"/>
 
     <g:form url="[resource: userInstance, action: 'selfUpdate']" method="PUT">
-        <g:hiddenField name="version" value="${userInstance?.version}"/>
         <fieldset class="form">
             <g:render template="/user/self_form"/>
 
