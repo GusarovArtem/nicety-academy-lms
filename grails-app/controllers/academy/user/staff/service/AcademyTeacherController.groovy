@@ -15,6 +15,7 @@ class AcademyTeacherController implements AcademyUserControllerTrait {
         _index(max)
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_STUDENT'])
     def show(AcademyTeacher userInstance) {
         _show(userInstance)
     }
@@ -25,6 +26,7 @@ class AcademyTeacherController implements AcademyUserControllerTrait {
     }
 
     @Transactional
+    @Secured(['ROLE_ADMIN'])
     def save(AcademyTeacher userInstance) {
         _save(userInstance)
     }
