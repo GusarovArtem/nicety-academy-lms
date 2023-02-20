@@ -11,8 +11,8 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
     }
 
     @Override
-    void showMessage(academyUser, String code, String defaultCode = 'User') {
-        super.showMessage(academyUser.fullname(), code, defaultCode)
+    void showMessage(userInstance, String code) {
+        super.showMessage(userInstance.fullname(), code)
     }
 
     def _index(Integer max) {
@@ -32,62 +32,62 @@ trait AcademyUserControllerTrait implements AcademyControllerTrait {
                 .newInstance(params)], view: '/user/create'
     }
 
-    def _save(AcademyUser academyUser) {
-        if (!academyUser) {
+    def _save(AcademyUser userInstance) {
+        if (!userInstance) {
             notFound()
             return
         }
 
-        academyUser.createdOn = new Date()
-        academyUser.clearErrors()
-        academyUser.validate()
+        userInstance.createdOn = new Date()
+        userInstance.clearErrors()
+        userInstance.validate()
 
-        if (academyUser.hasErrors()) {
-            render model: [userInstance: academyUser], view: '/user/create'
+        if (userInstance.hasErrors()) {
+            render model: [userInstance: userInstance], view: '/user/create'
             return
         }
 
-        academyUser.save flush: true
-        AcademyUserRole.create(academyUser, true)
+        userInstance.save flush: true
+        AcademyUserRole.create(userInstance, true)
 
-        showMessage(academyUser, "default.created.message")
-        redirect academyUser
+        showMessage(userInstance, "default.created.message")
+        redirect userInstance
     }
 
 
-    def _edit(AcademyUser academyUser) {
-        render model: [userInstance: academyUser], view: '/user/edit'
+    def _edit(AcademyUser userInstance) {
+        render model: [userInstance: userInstance], view: '/user/edit'
     }
 
     def _selfEdit(AcademyUser userInstance) {
         render model: [userInstance: userInstance], view: '/user/self_edit'
     }
 
-    def _update(AcademyUser academyUser) {
-        update(userInstance, "edit")
+    def _update(AcademyUser userInstance) {
+        update(userInstance, "/user/edit")
     }
 
     def _selfUpdate(AcademyUser userInstance) {
-        update(userInstance, "self_edit")
+        update(userInstance, "/user/self_edit")
     }
 
-    private update(AcademyUser academyUser, view) {
-        if (academyUser == null) {
+    private update(AcademyUser userInstance, view) {
+        if (userInstance == null) {
             notFound()
             return
         }
 
-        academyUser.validate()
+        userInstance.validate()
 
-        if (academyUser.hasErrors()) {
-            render model: [userInstance: academyUser], view: view
+        if (userInstance.hasErrors()) {
+            render model: [userInstance: userInstance], view: view
             return
         }
 
-        academyUser.save flush: true
+        userInstance.save flush: true
 
-        showMessage(academyUser, 'account.updated')
-        redirect academyUser
+        showMessage(userInstance, 'account.updated')
+        redirect userInstance
     }
 
 }
