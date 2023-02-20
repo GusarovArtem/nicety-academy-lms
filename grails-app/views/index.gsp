@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>${message(code: 'lms.home.label')}</title>
+    <title>${message(code: 'home.label')}</title>
 </head>
 <body>
 
