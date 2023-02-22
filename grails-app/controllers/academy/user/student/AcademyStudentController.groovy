@@ -12,45 +12,38 @@ class AcademyStudentController implements AcademyUserControllerTrait {
         return AcademyTeacher
     }
 
-    @Secured(['ROLE_ADMIN'])
+    @Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_STUDENT_MANAGER'])
     def index(Integer max) {
         _index(max)
     }
 
-    @Secured(['ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_STUDENT'])
     def show(AcademyTeacher userInstance) {
         _show(userInstance)
     }
 
-    @Secured(['ROLE_ADMIN'])
     def create() {
         _create()
     }
 
     @Transactional
-    @Secured(['ROLE_ADMIN', 'ROLE_STUDENT'])
     def save(AcademyTeacher userInstance) {
         _save(userInstance)
     }
 
-    @Secured(['ROLE_ADMIN'])
     def edit(AcademyTeacher userInstance) {
         _edit(userInstance)
     }
 
-    @Secured(['ROLE_STUDENT'])
     def selfEdit(AcademyTeacher userInstance) {
         _selfEdit(userInstance)
     }
 
     @Transactional
-    @Secured(['ROLE_ADMIN'])
     def update(AcademyTeacher userInstance) {
         _update(userInstance)
     }
 
     @Transactional
-    @Secured(['ROLE_STUDENT'])
     def selfUpdate(AcademyTeacher userInstance) {
         _selfUpdate(userInstance)
     }
