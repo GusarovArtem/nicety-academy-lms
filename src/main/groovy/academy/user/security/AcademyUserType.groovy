@@ -9,6 +9,7 @@ enum AcademyUserType {
 //  Management
     MANAGER("manager", "ROLE_MANAGER"),
     HR_MANAGER("hrManager", "ROLE_HR_MANAGER"),
+    STUDENT_MANAGER("studentManager", "ROLE_STUDENT_MANAGER"),
 //  Service
     TEACHER("teacher", "ROLE_TEACHER"),
 //  STUDENT
