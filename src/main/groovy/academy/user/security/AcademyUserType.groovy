@@ -3,11 +3,15 @@ package academy.user.security
 enum AcademyUserType {
 
     SYSTEM_USER(null, "ROLE_SYSTEM_USER"),
-    STUDENT("student", "ROLE_STUDENT"),
+
+//  Administration
+    ADMIN("admin", "ROLE_ADMIN"),
+//  Management
+    MANAGER("manager", "ROLE_MANAGER"),
 //  Service
     TEACHER("teacher", "ROLE_TEACHER"),
-//  Administration
-    ADMIN("admin", "ROLE_ADMIN");
+//  STUDENT
+    STUDENT("student", "ROLE_STUDENT");
 
     String role
 
