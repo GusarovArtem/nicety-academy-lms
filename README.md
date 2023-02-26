@@ -1,7 +1,6 @@
 # Learning Management System for Nicety Academy
 
-**Application Microservises Cummunication Structure**
-![Academy Application Cummunication Structure](https://user-images.githubusercontent.com/105131547/220550225-a6cdf2a3-d221-4991-81ae-91790a0941be.png)
+![Nicety Academy Microservices Communication Structure](https://user-images.githubusercontent.com/105131547/221430096-46183e9d-f202-4eef-947c-b96c95e34d77.png)
 
 
 **Application Service Structure**
