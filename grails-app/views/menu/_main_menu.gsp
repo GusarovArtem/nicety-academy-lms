@@ -18,6 +18,9 @@
     <academyMenu:leaf controller="academyCourse"
                       title="Course"
                       access="ROLE_ADMIN"/>
+    <academyMenu:leaf controller="academyCourseType"
+                      title="Course Type"
+                      access="ROLE_ADMIN"/>
     <academyMenu:leaf controller="academyGroup"
                       title="Group"
                       access="ROLE_ADMIN"/>
