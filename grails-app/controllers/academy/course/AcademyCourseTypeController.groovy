@@ -15,35 +15,34 @@ class AcademyCourseTypeController implements AcademyControllerTrait {
     }
 
     def index() {
-        def courseInstanceList = targetDomainClass().findAll()
+        def courseTypeInstanceList = targetDomainClass().findAll()
 
-        render model: [courseInstanceClass: targetDomainClass(),
-                       courseInstanceList : courseInstanceList], view: '/course/index'
+        render model: [courseTypeInstanceClass: targetDomainClass(),
+                       courseTypeInstanceList : courseTypeInstanceList], view: '/course/type/index'
     }
 
-    def show(AcademyCourse courseInstance) {
-        courseInstance.clearErrors()
-        render model: [courseInstance: courseInstance], view: '/courseType/show'
+    def show(AcademyCourseType courseTypeInstance) {
+        courseTypeInstance.clearErrors()
+        render model: [courseTypeInstance: courseTypeInstance], view: '/course/type/show'
     }
 
     def create() {
-        render model: [courseInstance: targetDomainClass()
-                .newInstance(params)], view: '/courseType/create'
+        render model: [courseTypeInstance: targetDomainClass()
+                .newInstance(params)], view: '/course/type/create'
     }
 
     @Transactional
-    def save(AcademyCourse course) {
+    def save(AcademyCourseType course) {
         if (!course) {
             notFound()
             return
         }
 
-        course.createdOn = new Date()
         course.clearErrors()
         course.validate()
 
         if (course.hasErrors()) {
-            render model: [courseInstance: course], view: '/courseType/create'
+            render model: [courseTypeInstance: course], view: '/course/type/create'
             return
         }
 
