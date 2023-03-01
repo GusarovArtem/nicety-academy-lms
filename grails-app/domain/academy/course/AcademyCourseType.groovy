@@ -12,11 +12,11 @@ class AcademyCourseType {
 
     Code code
 
-    String label
+    String tittle
 
     static constraints = {
         code blank: false
-        label blank: false
+        tittle blank: false
     }
 
 }
