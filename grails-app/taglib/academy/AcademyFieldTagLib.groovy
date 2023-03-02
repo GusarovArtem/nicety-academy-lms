@@ -2,11 +2,33 @@ package academy
 
 import grails.util.GrailsNameUtils
 
-class AcademyFormTagLib implements AcademyTagLibTrait {
+class AcademyFieldTagLib implements AcademyTagLibTrait {
 
-    static namespace = "academyForm"
+    static namespace = "academyField"
 
-    def field = { attrs, body ->
+    def select = { attrs, body ->
+        require attrs, 'name'
+        require attrs, 'selector'
+
+        def elementId = randomId()
+        markup.span {
+            mkp.yieldUnescaped g.hiddenField(name: attrs.name, value: attrs.initValue, id: elementId)
+            script {
+                // language=js
+                mkp.yieldUnescaped """
+                    createSelect(\$('#$elementId'), {
+                        url: '${selectorLink(selector: attrs.selector)}',
+                        placeholder: '${g.message(code: 'selector.' + attrs.selector + '.placeholder')}',
+                        initText: '${attrs.initText}',
+                        onChange: ${attrs.onChange},
+                        multiple:  ${attrs.multiple},
+                    });
+                """
+            }
+        }
+    }
+
+    def formField = { attrs, body ->
         if (attrs.removeIf) {
             return
         }
