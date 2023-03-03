@@ -1,4 +1,4 @@
-<%@ page import="academy.course.AcademyCourse" %>
+<%@ page import="academy.course.AcademyCourse; academy.course.AcademyCourseType" %>
 
 <academyField:formField bean="${courseInstance}"
                    originalEntity="${AcademyCourse}"
@@ -14,24 +14,17 @@
     <g:textField name="description" required="required" value="${courseInstance?.description}"/>
 </academyField:formField>
 
-%{--<academyField:formField bean="${courseInstance}"--}%
-%{--                   field="courseType"--}%
-%{--                   required="true">--}%
-%{--    <academyField:select selector="courseType"--}%
-%{--              name="courseType"--}%
-%{--              initValue="${courseInstance.courseType?.id}"--}%
-%{--              initText="${courseInstance.courseType?.tittle}"/>--}%
-%{--</academyField:formField>--}%
 
 <academyField:formField bean="${courseInstance}"
                         originalEntity="${AcademyCourse}"
                         field="courseType"
                         required="true">
 
-    <academyField:select selector="courseType"
-                         name="courseType"
-                         initValue="${courseInstance.courseType?.id}"
-                         initText="${courseInstance.courseType?.tittle}"/>
+    <select name="courseType">
+        <g:each in="${AcademyCourseType.all}" var="type">
+            <option value="${type.id}">${type.tittle}</option>
+        </g:each>
+    </select>
 </academyField:formField>
 
 

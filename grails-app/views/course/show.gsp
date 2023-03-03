@@ -40,8 +40,8 @@
                 <academyComponents:valOrAbsentWithLabel messageLabel="academyCourse.createdOn.label"
                                                         value="${courseInstance.createdOn}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyCourse.type.label"
-                                                        value="${message(code:  courseInstance.courseType)}"/>
+                <academyComponents:valOrAbsentWithLabel messageLabel="academyCourse.courseType.label"
+                                                        value="${message(code:  courseInstance.courseType.tittle)}"/>
 
                 <academyComponents:valOrAbsentWithLabel messageLabel="academyCourse.active.label"
                                                         value="${courseInstance.active}"/>
