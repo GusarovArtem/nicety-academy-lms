@@ -38,6 +38,10 @@ class ReactorsRegistrarService {
         log.info "Registered VALIDATORS/REACTORS:\n\t${reactors.join('\n\t')}"
     }
 
+    def reactors() {
+        reactors
+    }
+
     def each(@ClosureParams(value = SimpleType, options = ["Reactor"]) Closure closure) {
         reactors.each closure
     }
