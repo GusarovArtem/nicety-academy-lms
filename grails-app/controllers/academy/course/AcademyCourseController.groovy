@@ -38,7 +38,6 @@ class AcademyCourseController implements AcademyControllerTrait {
             return
         }
 
-        course.createdOn = new Date()
         course.clearErrors()
         course.validate()
 
@@ -47,7 +46,13 @@ class AcademyCourseController implements AcademyControllerTrait {
             return
         }
 
-        course.save flush: true
+        course = persistNew(AcademyCourse) {
+            tittle = course.tittle
+            description = course.description
+            createdOn = new Date()
+            courseType = course.courseType
+            active = course.active
+        }
 
         showMessage(course.tittle, "default.created.message")
         redirect course
@@ -58,6 +63,7 @@ class AcademyCourseController implements AcademyControllerTrait {
         render model: [courseInstance: course], view: '/course/edit'
     }
 
+    @Transactional
     def update(AcademyCourse course) {
         if (course == null) {
             notFound()
@@ -71,7 +77,12 @@ class AcademyCourseController implements AcademyControllerTrait {
             return
         }
 
-        course.save flush: true
+        course = persist(course) {
+            tittle = course.tittle
+            description = course.description
+            courseType = course.courseType
+            active = course.active
+        }
 
         showMessage(course.tittle, 'academyCourse.updated')
         redirect course
