@@ -19,7 +19,7 @@ class AcademyCourse {
     static constraints = {
         tittle       blank: false
         description  blank: false
-        createdOn    nullable: false
+        createdOn    nullable: true
         courseType   nullable: false
     }
 
