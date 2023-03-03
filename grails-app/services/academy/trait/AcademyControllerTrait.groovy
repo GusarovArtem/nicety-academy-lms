@@ -1,9 +1,10 @@
 package academy.trait
 
+import academy.persist.trait.PersistingTrait
 import grails.util.GrailsNameUtils
 import grails.web.api.WebAttributes
 
-trait AcademyControllerTrait implements WebAttributes {
+trait AcademyControllerTrait implements WebAttributes, PersistingTrait {
 
     def targetDomainClass() {}
 
