@@ -26,6 +26,10 @@ trait ReactorConfigTrait {
         configs << configurer.result()
     }
 
+    def clearConfiguration() {
+        configs = []
+    }
+
     abstract void configure()
 
 }

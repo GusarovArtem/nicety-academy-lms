@@ -11,9 +11,13 @@ class BootStrap {
 
     def domainService
 
+    def reactorsRegistrarService
+
     def init = { servletContext ->
 
         log.info 'BOOTSTRAPPING start'
+
+        reactorsRegistrarService.reconfigureAll()
 
         createAcademyRolesIfNotExist()
         createSuperAdminIfNotExists()

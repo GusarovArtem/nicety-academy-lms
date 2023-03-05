@@ -1,5 +1,6 @@
 package academy.reactor
 
+import academy.reactor.impls.microservices.CourseProducerReactorService
 import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,7 +12,9 @@ class ReactorsRegistrarService {
     @Autowired
     private List<Reactor> reactors
 
-    private List<Class<? extends Reactor>> runFirstReactors = []
+    private List<Class<? extends Reactor>> runFirstReactors = [
+            CourseProducerReactorService
+    ]
 
     private List<Class<? extends Reactor>> runLastReactors = []
 
@@ -46,4 +49,11 @@ class ReactorsRegistrarService {
         reactors.each closure
     }
 
+    def reconfigureAll() {
+        each {
+            it.clearConfiguration()
+            it.configure()
+            log.info "Configured reactor ${it.class.simpleName} with configs:\n\t${it.configs.join('\n\t')}"
+        }
+    }
 }
