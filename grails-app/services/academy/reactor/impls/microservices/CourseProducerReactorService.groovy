@@ -18,7 +18,7 @@ class CourseProducerReactorService extends Reactor {
             types ChangeType.CREATED
 
             react {
-                courseProducer.createCourse(it)
+                courseProducer.createCourse(it.entity)
             }
         }
         on AcademyCourse, {
