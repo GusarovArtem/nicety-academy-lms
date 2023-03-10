@@ -1,6 +1,7 @@
 package academy.product.course
 
 import academy.product.course.group.AcademyGroup
+import academy.product.price.AcademyProductPrice
 
 class AcademyCourse {
 
@@ -9,6 +10,8 @@ class AcademyCourse {
     String description
 
     Date createdOn
+
+    AcademyProductPrice coursePrice
 
     AcademyCourseType courseType
 
@@ -20,6 +23,7 @@ class AcademyCourse {
         tittle       blank: false
         description  blank: false
         createdOn    nullable: true
+        coursePrice  nullable: false
         courseType   nullable: false
     }
 
