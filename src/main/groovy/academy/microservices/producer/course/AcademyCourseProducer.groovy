@@ -1,6 +1,6 @@
 package academy.microservices.producer.course
 
-import academy.course.AcademyCourse
+import academy.product.course.AcademyCourse
 import io.micronaut.configuration.kafka.annotation.KafkaClient
 import io.micronaut.configuration.kafka.annotation.Topic
 

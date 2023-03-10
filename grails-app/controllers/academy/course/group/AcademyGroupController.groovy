@@ -1,6 +1,6 @@
 package academy.course.group
 
-
+import academy.product.course.group.AcademyGroup
 import academy.trait.AcademyControllerTrait
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured

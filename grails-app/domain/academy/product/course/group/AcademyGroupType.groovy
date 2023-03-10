@@ -1,4 +1,4 @@
-package academy.course.group
+package academy.product.course.group
 
 class AcademyGroupType {
 

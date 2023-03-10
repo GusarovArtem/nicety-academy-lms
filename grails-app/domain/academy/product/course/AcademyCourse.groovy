@@ -1,6 +1,6 @@
-package academy.course
+package academy.product.course
 
-import academy.course.group.AcademyGroup
+import academy.product.course.group.AcademyGroup
 
 class AcademyCourse {
 

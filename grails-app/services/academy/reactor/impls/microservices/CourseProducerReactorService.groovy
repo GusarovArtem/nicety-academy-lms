@@ -1,6 +1,6 @@
 package academy.reactor.impls.microservices
 
-import academy.course.AcademyCourse
+import academy.product.course.AcademyCourse
 import academy.microservices.producer.course.AcademyCourseProducer
 import academy.persist.change.ChangeType
 import academy.reactor.Reactor

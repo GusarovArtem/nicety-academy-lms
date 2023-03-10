@@ -1,4 +1,4 @@
-<%@ page import="academy.course.group.AcademyGroup" %>
+<%@ page import="academy.product.course.group.AcademyGroup" %>
 
 <academyField:formField bean="${groupInstance}"
                    originalEntity="${AcademyGroup}"

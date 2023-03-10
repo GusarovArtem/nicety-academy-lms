@@ -1,4 +1,4 @@
-package academy.course
+package academy.product.course
 
 class AcademyCourseType {
 

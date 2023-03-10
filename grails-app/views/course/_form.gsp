@@ -1,14 +1,14 @@
-<%@ page import="academy.course.AcademyCourse; academy.course.AcademyCourseType" %>
+<%@ page import="academy.product.course.AcademyCourse; academy.product.course.AcademyCourse; academy.product.course.AcademyCourse; academy.product.course.AcademyCourse; academy.course.AcademyCourse; academy.product.course.AcademyCourseType" %>
 
 <academyField:formField bean="${courseInstance}"
-                   originalEntity="${AcademyCourse}"
+                   originalEntity="${academy.product.course.AcademyCourse}"
                    required="true"
                    field="tittle">
     <g:textField name="tittle" required="required" value="${courseInstance?.tittle}"/>
 </academyField:formField>
 
 <academyField:formField bean="${courseInstance}"
-                   originalEntity="${AcademyCourse}"
+                   originalEntity="${academy.product.course.AcademyCourse}"
                    required="true"
                    field="description">
     <g:textField name="description" required="required" value="${courseInstance?.description}"/>
@@ -16,7 +16,7 @@
 
 
 <academyField:formField bean="${courseInstance}"
-                        originalEntity="${AcademyCourse}"
+                        originalEntity="${academy.product.course.AcademyCourse}"
                         field="courseType"
                         required="true">
 
@@ -30,7 +30,7 @@
 
 
 <academyField:formField bean="${courseInstance}"
-                   originalEntity="${AcademyCourse}"
+                   originalEntity="${academy.product.course.AcademyCourse}"
                    field="active">
     <academyComponents:checkbox name="active" value="${courseInstance?.active}"/>
 </academyField:formField>
