@@ -51,6 +51,7 @@ class AcademyCourseController implements AcademyControllerTrait {
             tittle = course.tittle
             description = course.description
             createdOn = new Date()
+            coursePrice = course.coursePrice
             courseType = course.courseType
             active = course.active
         }

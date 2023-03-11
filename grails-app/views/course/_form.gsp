@@ -33,12 +33,7 @@
                         required="true">
     <g:textField name="coursePrice.price"
                  required="required"
-                 value="${courseInstance?.coursePrice?.price}"/>
-    <select name="courseType">
-        <g:each in="${AcademyProductPrice.Currency}" var="currency">
-            <option value="${currency}">${currency}</option>
-        </g:each>
-    </select>
+                 value="${courseInstance?.coursePrice?.price_usd}"/>
 </academyField:formField>
 
 

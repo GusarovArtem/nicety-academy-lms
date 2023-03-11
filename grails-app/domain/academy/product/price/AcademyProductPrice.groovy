@@ -2,16 +2,9 @@ package academy.product.price
 
 class AcademyProductPrice {
 
-    static enum Currency {
-        USD, PLN, UAH
-    }
-
-    Currency currency
-
-    Double price
+    Double price_usd
 
     static constraints = {
-        currency nullable: false
-        price nullable: false
+        price_usd nullable: false
     }
 }
