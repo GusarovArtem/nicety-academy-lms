@@ -1,7 +1,7 @@
 package academy.reactor.impls.microservices
 
 import academy.product.course.AcademyCourse
-import academy.microservices.producer.course.AcademyCourseProducer
+import academy.kafka.producer.course.AcademyCourseProducer
 import academy.persist.change.ChangeType
 import academy.reactor.Reactor
 import org.springframework.beans.factory.annotation.Autowired

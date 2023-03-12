@@ -1,4 +1,4 @@
-package academy.microservices.producer.course
+package academy.kafka.producer.course
 
 
 import academy.product.course.AcademyCourseType
