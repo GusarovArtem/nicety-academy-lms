@@ -47,6 +47,9 @@ dependencies {
     /* Micronaut Kafka */
     implementation "io.micronaut.kafka:micronaut-kafka:4.3.1"
 
+    /* JWT */
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+
     /* Hibernate */
     implementation "org.hibernate:hibernate-core:5.6.14.Final"
     implementation "org.hibernate:hibernate-ehcache:5.6.14.Final"

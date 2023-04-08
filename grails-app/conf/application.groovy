@@ -30,8 +30,15 @@ grails {
     }
 }
 
-//SPRING SECURITY
+auth {
+    url = 'https://auth.academy.nicety/authenticate'
+    jwt {
+        algorithm = 'HS512'
+        secret = 'kY2iN4qrWe/VFzN1dSmpSuxzFJwJKllt4p/fv4zz1ayGGkdzzxQ2X93TH0O312S'
+    }
+}
 
+//SPRING SECURITY
 // in current version spring-security the username property might not be override-able
 //grails.plugin.springsecurity.userLookup.usernamePropertyName = 'email'
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'academy.user.AcademyUser'
