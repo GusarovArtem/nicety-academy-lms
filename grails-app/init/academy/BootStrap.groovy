@@ -2,7 +2,7 @@ package academy
 
 import academy.user.security.AcademyRole
 import academy.user.security.AcademyUserRole
-import academy.user.security.AcademyUserType
+import academy.user.AcademyUserType
 import academy.user.staff.administration.AcademyAdmin
 
 class BootStrap {

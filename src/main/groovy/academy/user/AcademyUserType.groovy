@@ -1,4 +1,4 @@
-package academy.user.security
+package academy.user
 
 enum AcademyUserType {
 

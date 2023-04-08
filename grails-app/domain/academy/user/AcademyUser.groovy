@@ -1,9 +1,8 @@
 package academy.user
 
-import academy.user.field.AcademyEnglishLevel
+
 import academy.user.security.AcademyRole
 import academy.user.security.AcademyUserRole
-import academy.user.security.AcademyUserType
 import org.apache.commons.lang3.StringUtils
 
 class AcademyUser {
@@ -14,9 +13,6 @@ class AcademyUser {
     String surname
 
     String email
-
-    String password
-    String passwordConfirm
 
     Date createdOn
 
@@ -38,8 +34,6 @@ class AcademyUser {
     static mapping = {
         autowire true
     }
-
-    static transients = ['springSecurityService', 'passwordConfirm']
 
     static constraints = {
         email(blank: false, email: true, validator: { value, user ->
@@ -81,24 +75,9 @@ class AcademyUser {
         AcademyUserRole.findAllByUser(this).collect { it.role } as Set
     }
 
-    def afterLoad() {
-        passwordConfirm = password
-    }
 
     def beforeInsert() {
-        encodePassword()
         capitalizeName()
-    }
-
-    def beforeUpdate() {
-        if (password != null && isDirty('password') && validate()) {
-            encodePassword()
-        }
-    }
-
-    protected void encodePassword() {
-        password = springSecurityService.encodePassword(password)
-        passwordConfirm = password
     }
 
     protected void capitalizeName() {

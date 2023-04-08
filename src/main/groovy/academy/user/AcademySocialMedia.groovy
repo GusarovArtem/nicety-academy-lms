@@ -1,4 +1,4 @@
-package academy.user.field
+package academy.user
 
 enum AcademySocialMedia {
     LINKEDIN("Linkedin", "https://www.linkedin.com/example"),

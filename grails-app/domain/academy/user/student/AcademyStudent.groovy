@@ -1,7 +1,7 @@
 package academy.user.student
 
 import academy.user.AcademyUser
-import academy.user.security.AcademyUserType
+import academy.user.AcademyUserType
 
 class AcademyStudent extends AcademyUser {
 

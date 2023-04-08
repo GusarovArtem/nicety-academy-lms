@@ -1,7 +1,7 @@
 package academy.user.staff.management
 
 import academy.user.AcademyUser
-import academy.user.security.AcademyUserType
+import academy.user.AcademyUserType
 
 class AcademyManager extends AcademyUser {
 
