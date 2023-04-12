@@ -1,17 +1,29 @@
----
-grails:
-    profile: web
-    codegen:
-        defaultPackage: academy
-    spring:
-        transactionManagement:
-            proxies: false
-    gorm:
-        failOnError: true
-        reactor:
-            # Whether to translate GORM events into Reactor events
-            # Disabled by default for performance reasons
-            events: false
+academy:
+    user:
+        super_admin:
+            name: "Artem"
+            surname: "Gusarov"
+            email: "nicety.academy@gmail.com"
+            password: "cbbcc56f20efc1a8713ad014a0"
+auth:
+    url: "http://localhost:8084/jwtAuth/generateAuthToken"
+    jwt:
+        secret: "kY2iN4qrWe/VFzN1dSmpSuxzFJwJKllt4p/fv4zz1ayGGkdzzxQ2X93TH0O312S"
+        algorithm: "HS512"
+quartz:
+    autoStartup: false
+    globalJobListenerNames: []
+    globalTriggerListenerNames: []
+    schedulerListenerNames: []
+
+micronaut:
+    executors:
+        consumer:
+            type: FIXED
+kafka:
+    bootstrap:
+        servers: localhost:9092
+
 info:
     app:
         name: '@info.app.name@'
@@ -28,92 +40,22 @@ spring:
         multipart:
             max-file-size: 100MB
             max-request-size: 100MB
-micronaut:
-    executors:
-        consumer:
-            type: FIXED
-kafka:
-    bootstrap:
-        servers: localhost:9092
 
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: true
     jmx:
         enabled: true
+        unique-names: true
 
 management:
     context-path: /manage
-
----
-grails:
-    mime:
-        disable:
-            accept:
-                header:
-                    userAgents:
-                        - Gecko
-                        - WebKit
-                        - Presto
-                        - Trident
-        types:
-            all: '*/*'
-            atom: application/atom+xml
-            css: text/css
-            csv: text/csv
-            form: application/x-www-form-urlencoded
-            html:
-                - text/html
-                - application/xhtml+xml
-            js: text/javascript
-            json:
-                - application/json
-                - text/json
-            multipartForm: multipart/form-data
-            pdf: application/pdf
-            rss: application/rss+xml
-            text: text/plain
-            hal:
-                - application/hal+json
-                - application/hal+xml
-            xml:
-                - text/xml
-                - application/xml
-            excel: application/vnd.ms-excel
-            xlsx: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-            docx: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-    urlmapping:
-        cache:
-            maxsize: 1000
-    controllers:
-        defaultScope: singleton
-        upload:
-            maxFileSize: 100_000_000
-            maxRequestSize: 100_000_000
-    converters:
-        encoding: UTF-8
-    views:
-        default:
-            codec: html
-        gsp:
-            encoding: UTF-8
-            htmlcodec: xml
-            codecs:
-                expression: html
-                scriptlets: html
-                taglib: none
-                staticparts: none
 
 server:
     port: 8081
     session:
         timeout: 10000
 
-endpoints:
-    jmx:
-        unique-names: true
-
----
 hibernate:
     cache:
         queries: false
@@ -190,3 +132,88 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+---
+grails:
+    profile: web
+    codegen:
+        defaultPackage: academy
+    spring:
+        transactionManagement:
+            proxies: false
+    gorm:
+        failOnError: true
+        reactor:
+            # Whether to translate GORM events into Reactor events
+            # Disabled by default for performance reasons
+            events: false
+    plugin:
+        springsecurity:
+            providerNames: ['jwtAuthProviderService']
+            userLookup:
+                userDomainClassName: 'academy.user.AcademyUser'
+                authorityJoinClassName: 'academy.user.security.AcademyUserRole'
+            authority:
+                className: 'academy.user.security.AcademyRole'
+
+
+    cache:
+        enabled: true
+        ehcache:
+            ehcacheXmlLocation: 'classpath:ehcache-cache-plugin.xml'
+            lockTimeout: 200 # In milliseconds
+    mime:
+        disable:
+            accept:
+                header:
+                    userAgents:
+                        - Gecko
+                        - WebKit
+                        - Presto
+                        - Trident
+        types:
+            all: '*/*'
+            atom: application/atom+xml
+            css: text/css
+            csv: text/csv
+            form: application/x-www-form-urlencoded
+            html:
+                - text/html
+                - application/xhtml+xml
+            js: text/javascript
+            json:
+                - application/json
+                - text/json
+            multipartForm: multipart/form-data
+            pdf: application/pdf
+            rss: application/rss+xml
+            text: text/plain
+            hal:
+                - application/hal+json
+                - application/hal+xml
+            xml:
+                - text/xml
+                - application/xml
+            excel: application/vnd.ms-excel
+            xlsx: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            docx: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    urlmapping:
+        cache:
+            maxsize: 1000
+    controllers:
+        defaultScope: singleton
+        upload:
+            maxFileSize: 100_000_000
+            maxRequestSize: 100_000_000
+    converters:
+        encoding: UTF-8
+    views:
+        default:
+            codec: html
+        gsp:
+            encoding: UTF-8
+            htmlcodec: xml
+            codecs:
+                expression: html
+                scriptlets: html
+                taglib: none
+                staticparts: none
