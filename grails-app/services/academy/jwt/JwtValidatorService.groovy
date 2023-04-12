@@ -1,23 +1,32 @@
 package academy.jwt
 
+import academy.user.AcademyUser
 import io.jsonwebtoken.Claims
+import io.jsonwebtoken.ExpiredJwtException
+import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.MalformedJwtException
+import io.jsonwebtoken.UnsupportedJwtException
+import io.jsonwebtoken.security.SignatureException
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.core.userdetails.UserDetails
 
 import java.util.function.Function
 
 class JwtValidatorService {
 
     @Value('${auth.jwt.secret}')
-    private String jwtSecret
+    private String JWT_SECRET
 
-    Boolean validate(String token, UserDetails userDetails) {
-        final String username = getUsernameFromToken(token)
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token))
+    @Value('${auth.jwt.algorithm}')
+    private String JWT_ALGORITHM
+
+    Boolean validate(String token) {
+        final String email = getUserEmailFromToken(token)
+
+        return (AcademyUser.findByEmail(email)  && !isTokenExpired(token))
     }
 
-    String getUsernameFromToken(String token) {
+    String getUserEmailFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject)
     }
 
@@ -35,8 +44,23 @@ class JwtValidatorService {
     }
 
 
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody()
+    private Claims getAllClaimsFromToken(String token) throws JwtException {
+        try {
+            return Jwts.parser()
+                    .setSigningKey(JWT_SECRET)
+                    .parseClaimsJws(token)
+                    .getBody()
+        } catch (ExpiredJwtException ex) {
+            throw new JwtException("Token has expired", ex)
+        } catch (UnsupportedJwtException ex) {
+            throw new JwtException("Unsupported token", ex)
+        } catch (MalformedJwtException ex) {
+            throw new JwtException("Malformed token", ex)
+        } catch (SignatureException ex) {
+            throw new JwtException("Invalid token signature", ex)
+        } catch (IllegalArgumentException ex) {
+            throw new JwtException("Invalid token", ex)
+        }
     }
 
     private Boolean isTokenExpired(String token) {
