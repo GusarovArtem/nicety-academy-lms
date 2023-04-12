@@ -1,7 +1,7 @@
 package academy
 
-import academy.user.security.AcademyRole
-import academy.user.security.AcademyUserRole
+import academy.user.role.AcademyRole
+import academy.user.role.AcademyUserRole
 import academy.user.AcademyUserType
 import academy.user.staff.administration.AcademyAdmin
 

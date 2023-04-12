@@ -1,8 +1,8 @@
 package academy.user
 
 
-import academy.user.security.AcademyRole
-import academy.user.security.AcademyUserRole
+import academy.user.role.AcademyRole
+import academy.user.role.AcademyUserRole
 import org.apache.commons.lang3.StringUtils
 
 class AcademyUser {

@@ -1,7 +1,7 @@
 package academy.user
 
 import academy.trait.AcademyControllerTrait
-import academy.user.security.AcademyUserRole
+import academy.user.role.AcademyUserRole
 
 trait AcademyUserControllerTrait implements AcademyControllerTrait {
 

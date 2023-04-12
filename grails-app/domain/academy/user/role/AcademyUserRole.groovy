@@ -1,4 +1,4 @@
-package academy.user.security
+package academy.user.role
 
 import academy.user.AcademyUser
 
