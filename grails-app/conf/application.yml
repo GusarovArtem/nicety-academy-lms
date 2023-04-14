@@ -8,7 +8,7 @@ academy:
 auth:
     url: "http://localhost:8084/jwtAuth/generateAuthToken"
     jwt:
-        secret: "kY2iN4qrWe/VFzN1dSmpSuxzFJwJKllt4p/fv4zz1ayGGkdzzxQ2X93TH0O312S"
+        secret: "XUlkPxDr620G6sz2OC40sXvkaqzeFeeFTm93A0BMLbWXFKb5SzFdTAsJgLoOzSWTUAhcTvoe5KiYPDg3wif1Ew"
         algorithm: "HS512"
 quartz:
     autoStartup: false
