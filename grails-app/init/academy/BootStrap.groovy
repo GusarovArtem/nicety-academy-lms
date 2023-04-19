@@ -57,8 +57,6 @@ class BootStrap {
                             name     : SUPER_ADMIN.name,
                             surname  : SUPER_ADMIN.surname,
                             email    : SUPER_ADMIN.email,
-                            password : SUPER_ADMIN.password,
-                            passwordConfirm: SUPER_ADMIN.password
                          )
                     },
                     {
