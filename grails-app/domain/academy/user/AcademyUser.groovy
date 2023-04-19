@@ -1,9 +1,10 @@
 package academy.user
 
 
-import academy.user.role.AcademyRole
 import academy.user.role.AcademyUserRole
 import org.apache.commons.lang3.StringUtils
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 
 class AcademyUser {
 
@@ -27,9 +28,6 @@ class AcademyUser {
     AcademyEnglishLevel englishLevel
 
     boolean enabled
-    boolean accountExpired
-    boolean passwordExpired
-    boolean accountLocked
 
     static mapping = {
         autowire true
@@ -50,12 +48,6 @@ class AcademyUser {
             true
         })
 
-        password(nullable: false, blank: false, password: true)
-        passwordConfirm(nullable: false, blank: false, bindable: true, password: true, validator: { val, obj ->
-            obj.password == val ? true :
-                    ['invalid.matchingpasswords']
-        })
-
         name         blank: false
         surname      blank: false
         createdOn    nullable: false
@@ -71,8 +63,10 @@ class AcademyUser {
         name + " " + surname
     }
 
-    Set<AcademyRole> authorities() {
-        AcademyUserRole.findAllByUser(this).collect { it.role } as Set
+    Collection<GrantedAuthority> authorities() {
+        AcademyUserRole.findAllByUser(this).collect {
+            new SimpleGrantedAuthority(it.role.authority)
+        }
     }
 
 
