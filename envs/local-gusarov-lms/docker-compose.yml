@@ -49,7 +49,7 @@ services:
     ports:
       - "8083:80"
     volumes:
-      - "~/Documents/business/nicety-academy-enterprise/dev/microservices/nicety-academy-lms/envs/local-artem-gusarov/academy.nginx:/etc/nginx/nginx.conf"
+      - "~/Documents/business/nicety-academy-enterprise/dev/microservices/nicety-academy-lms/envs/local-gusarov-lms/academy.nginx:/etc/nginx/nginx.conf"
       - "~/Documents/business/nicety-academy-enterprise/dev/academy-statics:/academy-statics"
     environment:
       TZ: "Europe/Ukraine"
