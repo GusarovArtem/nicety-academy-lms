@@ -7,6 +7,7 @@ academy:
             password: "cbbcc56f20efc1a8713ad014a0"
 auth:
     url: "http://localhost:8084/jwtAuth/generateAuthToken"
+    header: "Authorization"
     jwt:
         secret: "XUlkPxDr620G6sz2OC40sXvkaqzeFeeFTm93A0BMLbWXFKb5SzFdTAsJgLoOzSWTUAhcTvoe5KiYPDg3wif1Ew"
         algorithm: "HS512"

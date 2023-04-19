@@ -20,10 +20,11 @@ class JwtValidatorService {
     @Value('${auth.jwt.algorithm}')
     private String JWT_ALGORITHM
 
-    Boolean validate(String token) {
-        final String email = getUserEmailFromToken(token)
+    Boolean validate(String token, String enteredEmail) {
+        final String tokenEmail = getUserEmailFromToken(token)
+        boolean emailsEqual = tokenEmail == enteredEmail
 
-        return (AcademyUser.findByEmail(email)  && !isTokenExpired(token))
+        return (emailsEqual && !isTokenExpired(token))
     }
 
     String getUserEmailFromToken(String token) {
