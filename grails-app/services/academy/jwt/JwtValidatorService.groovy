@@ -1,13 +1,9 @@
 package academy.jwt
 
-import academy.user.AcademyUser
+
 import io.jsonwebtoken.Claims
-import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.MalformedJwtException
-import io.jsonwebtoken.UnsupportedJwtException
-import io.jsonwebtoken.security.SignatureException
 import org.springframework.beans.factory.annotation.Value
 
 import java.util.function.Function
@@ -46,22 +42,11 @@ class JwtValidatorService {
 
 
     private Claims getAllClaimsFromToken(String token) throws JwtException {
-        try {
-            return Jwts.parser()
-                    .setSigningKey(JWT_SECRET)
-                    .parseClaimsJws(token)
-                    .getBody()
-        } catch (ExpiredJwtException ex) {
-            throw new JwtException("Token has expired", ex)
-        } catch (UnsupportedJwtException ex) {
-            throw new JwtException("Unsupported token", ex)
-        } catch (MalformedJwtException ex) {
-            throw new JwtException("Malformed token", ex)
-        } catch (SignatureException ex) {
-            throw new JwtException("Invalid token signature", ex)
-        } catch (IllegalArgumentException ex) {
-            throw new JwtException("Invalid token", ex)
-        }
+        return Jwts.parser()
+                .setSigningKey(JWT_SECRET)
+                .parseClaimsJws(token)
+                .getBody()
+
     }
 
     private Boolean isTokenExpired(String token) {

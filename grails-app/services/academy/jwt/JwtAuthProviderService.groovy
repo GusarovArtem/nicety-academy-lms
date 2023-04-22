@@ -29,29 +29,22 @@ class JwtAuthProviderService implements AuthenticationProvider {
     @Override
     @Transactional
     Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String email = authentication.principal
-        String password = authentication.credentials
+        final String email = authentication.principal
+        final String password = authentication.credentials
 
-        String token = sendAuthRequest(email, password)?.body()
+        /* JWT generation on auth microservice */
+        final String token = sendAuthRequest(email, password)?.body()
 
-        if (jwtValidatorService.validate(token, email)) {
-            AcademyUser.withTransaction {
-                final AcademyUser user = AcademyUser.findByEmail(email)
-
-                authentication = new UsernamePasswordAuthenticationToken(user, null, user.authorities())
-                SecurityContextHolder.getContext().setAuthentication(authentication)
-
-                return authentication
-            }
-        } else {
-            throw new BadCredentialsException("Invalid email or password")
-        }
+        /*  JWT validation
+         *      On success:  set authentication for user
+         *      On failure:  throw BadCredentialsException */
+        return validateToken(authentication, token)
     }
 
     @Override
     boolean supports(Class<?> authentication) {
-        // Indicate whether this authentication provider supports the provided authentication token
-        // In this case, you can return true for any authentication token since JWT is independent of token type
+        /*  Indicate is authentication provider supports the provided authentication token
+         *  We return true for any authentication token since JWT is independent of token type */
         return true
     }
 
@@ -63,11 +56,34 @@ class JwtAuthProviderService implements AuthenticationProvider {
                 .header(AUTH_HEADER, getBasicAuthenticationHeader(email, password))
                 .build()
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (ConnectException e) {
+            log.error("Auth microservice is not available!", e)
+        }
     }
 
     private static final String getBasicAuthenticationHeader(String username, String password) {
         String valueToEncode = username + ":" + password;
         return "Basic " + Base64.getEncoder().encodeToString(valueToEncode.getBytes());
+    }
+
+    private Authentication validateToken(Authentication authentication, String token) {
+        String email = authentication.principal
+
+        try {
+            if (jwtValidatorService.validate(token, email)) {
+                AcademyUser.withTransaction {
+                    final AcademyUser user = AcademyUser.findByEmail(email)
+
+                    authentication = new UsernamePasswordAuthenticationToken(user, null, user.authorities())
+                    SecurityContextHolder.getContext().setAuthentication(authentication)
+                }
+                return authentication
+            }
+        } catch (Exception e) {
+            log.error("During sign in for $email: ", e)
+        }
+        throw new BadCredentialsException("Bad credentials")
     }
 }
