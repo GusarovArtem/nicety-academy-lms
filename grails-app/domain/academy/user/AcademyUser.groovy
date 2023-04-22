@@ -8,8 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 
 class AcademyUser {
 
-    def springSecurityService
-
     String name
     String surname
 
@@ -68,7 +66,6 @@ class AcademyUser {
             new SimpleGrantedAuthority(it.role.authority)
         }
     }
-
 
     def beforeInsert() {
         capitalizeName()
