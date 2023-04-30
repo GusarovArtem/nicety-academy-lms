@@ -41,7 +41,7 @@ services:
     restart: "no"
     command: bin/maildev --web 80 --smtp 1025 --verbose
     ports:
-      - 8383:80
+      - 8385:80
       - 1025:1025
   statics:
     image: nginx:1.15.4
