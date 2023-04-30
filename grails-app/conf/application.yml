@@ -1,16 +1,16 @@
 academy:
     user:
         super_admin:
-            name: "Artem"
-            surname: "Gusarov"
-            email: "nicety.academy@gmail.com"
-            password: "cbbcc56f20efc1a8713ad014a0"
+            name: 'Artem'
+            surname: 'Gusarov'
+            email: 'nicety.academy@gmail.com'
+            password: 'cbbcc56f20efc1a8713ad014a0'
 auth:
-    url: "http://localhost:8084/jwtAuth/generateAuthToken"
-    header: "Authorization"
+    url: 'http://localhost:8084/jwtAuth/generateAuthToken'
+    header: 'Authorization'
     jwt:
-        secret: "XUlkPxDr620G6sz2OC40sXvkaqzeFeeFTm93A0BMLbWXFKb5SzFdTAsJgLoOzSWTUAhcTvoe5KiYPDg3wif1Ew"
-        algorithm: "HS512"
+        secret: 'XUlkPxDr620G6sz2OC40sXvkaqzeFeeFTm93A0BMLbWXFKb5SzFdTAsJgLoOzSWTUAhcTvoe5KiYPDg3wif1Ew'
+        algorithm: 'HS512'
 quartz:
     autoStartup: false
     globalJobListenerNames: []
@@ -32,7 +32,7 @@ info:
         grailsVersion: '@info.app.grailsVersion@'
 spring:
     main:
-        banner-mode: "off"
+        banner-mode: 'off'
     groovy:
         template:
             check-template-location: false
@@ -147,17 +147,6 @@ grails:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
             events: false
-    plugin:
-        springsecurity:
-            providerNames: ['jwtAuthProviderService']
-            userLookup:
-                usernamePropertyName: 'email'
-                userDomainClassName: 'academy.user.AcademyUser'
-                authorityJoinClassName: 'academy.user.security.AcademyUserRole'
-            authority:
-                className: 'academy.user.security.AcademyRole'
-
-
     cache:
         enabled: true
         ehcache:
@@ -219,3 +208,71 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
+    plugin:
+        console:
+            csrfProtection:
+                enabled: false
+
+        springsecurity:
+            useBasicAuth: true
+            basic:
+                realmName: 'Academy basic auth realm'
+            providerNames: [ 'jwtAuthProviderService' ]
+            userLookup:
+                usernamePropertyName: 'email'
+                userDomainClassName: 'academy.user.AcademyUser'
+                authorityJoinClassName: 'academy.user.security.AcademyUserRole'
+            authority:
+                className: 'academy.user.security.AcademyRole'
+            rememberMe:
+                cookieName: 'academyRememberMeCookie'
+                key: 'academyRememberMeKEY'
+                tokenValiditySeconds: 1209600
+            filterChain:
+                chainMap:
+                   - pattern: '/**'
+                     filters: 'JOINED_FILTERS,-basicAuthenticationFilter,-basicExceptionTranslationFilter'
+            logout:
+                postOnly: false
+                alwaysUseDefaultTargetUrl: true
+
+            controllerAnnotations:
+                staticRules:
+                    - pattern: "/"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/show/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/selfEdit/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/create"
+                      access: [ "ROLE_ADMIN" ]
+                    - pattern: "/**/save/**"
+                      access: [ "ROLE_ADMIN" ]
+                    - pattern: "/**/edit/**"
+                      access: [ "ROLE_ADMIN" ]
+                    - pattern: "/**/update/**"
+                      access: [ "ROLE_ADMIN" ]
+                    - pattern: "/index"
+                      access: [ "ROLE_ADMIN" ]
+                    - pattern: "/login/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/logout/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/error"
+                      access: [ "permitAll" ]
+                    - pattern: "/assets/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/static/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/js/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/css/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/images/**"
+                      access: [ "permitAll" ]
+                    - pattern: "/**/favicon.ico"
+                      access: [ "permitAll" ]
+                    - pattern: "/language"
+                      access: [ "permitAll" ]
+                    - pattern: "/language/**"
+                      access: [ "permitAll" ]
