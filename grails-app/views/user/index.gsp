@@ -1,4 +1,4 @@
-<%@ page import="grails.util.GrailsNameUtils; academy.user.AcademyUser" %>
+<%@ page import="grails.util.GrailsNameUtils; academy.user.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,15 @@
 
 <body>
 
-<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
-    <academyButtons:buttonGroup>
-        <academyButtons:create/>
-    </academyButtons:buttonGroup>
-</academyButtons:buttonToolbar>
+<buttons:buttonToolbar style="margin: 0 0 10px 10px">
+    <buttons:buttonGroup>
+        <buttons:create/>
+    </buttons:buttonGroup>
+</buttons:buttonToolbar>
 
 <div id="list-user" class="content scaffold-list" role="main">
 
-    <academyMessages:showFlash flash="${flash}"/>
+    <messages:showFlash flash="${flash}"/>
 
     <table class="academy-table">
         <thead>

@@ -40,7 +40,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center">
 
                     <div style="display: flex; align-items: center">
-                        <academyComponents:checkbox name="${rememberMeParameter}"
+                        <components:checkbox name="${rememberMeParameter}"
                                                     value="${hasCookie}"
                                                     label="${g.message(code: 'springSecurity.login.remember.me.label')}"/>
                     </div>

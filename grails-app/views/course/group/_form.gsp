@@ -1,23 +1,23 @@
-<%@ page import="academy.product.course.group.AcademyGroup" %>
+<%@ page import="academy.product.course.group.Group; academy.product.course.group.AcademyGroup" %>
 
-<academyField:formField bean="${groupInstance}"
-                   originalEntity="${AcademyGroup}"
+<field:formField bean="${groupInstance}"
+                   originalEntity="${academy.product.course.group.Group}"
                    required="true"
                    field="name">
     <g:textField name="name" required="required" value="${groupInstance?.name}"/>
-</academyField:formField>
+</field:formField>
 
-<academyField:formField bean="${groupInstance}"
-                   originalEntity="${AcademyGroup}"
+<field:formField bean="${groupInstance}"
+                   originalEntity="${Group}"
                    field="maxStudentAmount">
     <g:textField name="maxStudentAmount" value="${groupInstance?.maxStudentAmount}"/>
-</academyField:formField>
+</field:formField>
 
-<academyField:formField bean="${groupInstance}"
-                   originalEntity="${AcademyGroup}"
+<field:formField bean="${groupInstance}"
+                   originalEntity="${Group}"
                    field="groupType">
     <g:textField name="groupType" value="${groupInstance?.groupType}"/>
-</academyField:formField>
+</field:formField>
 
 
 

@@ -10,16 +10,16 @@
 
 <body>
 
-<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
-    <academyButtons:buttonGroup>
-        <academyButtons:index/>
-    </academyButtons:buttonGroup>
-</academyButtons:buttonToolbar>
+<buttons:buttonToolbar style="margin: 0 0 10px 10px">
+    <buttons:buttonGroup>
+        <buttons:index/>
+    </buttons:buttonGroup>
+</buttons:buttonToolbar>
 
 <div id="create-group" class="content scaffold-create" role="main">
     <h1><g:message code="default.create.label" args="[message(code: entityMessageBase + '.label')]"/></h1>
 
-    <academyMessages:showFlash flash="${flash}" bean="${groupInstance}"/>
+    <messages:showFlash flash="${flash}" bean="${groupInstance}"/>
 
     <g:form url="[resource: groupInstance, action: 'save']">
         <fieldset class="form">
@@ -27,7 +27,7 @@
 
             <div class='fieldcontain'>
                 <label></label>
-                <academyButtons:submitCreate/>
+                <buttons:submitCreate/>
             </div>
         </fieldset>
     </g:form>

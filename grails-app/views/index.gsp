@@ -9,7 +9,7 @@
 <div id="" style="display: flex; flex-direction:column;">
 
     <div>
-        <academyMessages:showFlash flash="${flash}"/>
+        <messages:showFlash flash="${flash}"/>
     </div>
 
 

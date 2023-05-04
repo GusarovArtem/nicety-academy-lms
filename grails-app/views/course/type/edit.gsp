@@ -10,18 +10,18 @@
 
 <body>
 
-<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
-    <academyButtons:buttonGroup>
-        <academyButtons:index/>
-        <academyButtons:create/>
-        <academyButtons:show id="${courseTypeInstance.id}"/>
-    </academyButtons:buttonGroup>
-</academyButtons:buttonToolbar>
+<buttons:buttonToolbar style="margin: 0 0 10px 10px">
+    <buttons:buttonGroup>
+        <buttons:index/>
+        <buttons:create/>
+        <buttons:show id="${courseTypeInstance.id}"/>
+    </buttons:buttonGroup>
+</buttons:buttonToolbar>
 
 <div id="edit-course" class="content scaffold-edit" role="main">
     <h1><g:message code="default.edit.label" args="[message(code: entityMessageBase + '.label')]"/></h1>
 
-    <academyMessages:showFlash flash="${flash}" bean="${courseTypeInstance}"/>
+    <messages:showFlash flash="${flash}" bean="${courseTypeInstance}"/>
 
     <g:form url="[resource: courseTypeInstance, action: 'update']" method="PUT">
         <fieldset class="form">
@@ -29,7 +29,7 @@
 
             <div class='fieldcontain'>
                 <label></label>
-                <academyButtons:submitSave/>
+                <buttons:submitSave/>
             </div>
 
         </fieldset>

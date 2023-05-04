@@ -1,8 +1,9 @@
 package academy.reactor.impls.microservices
 
-import academy.product.course.AcademyCourse
-import academy.kafka.producer.course.AcademyCourseProducer
+
+import academy.kafka.producer.course.CourseProducer
 import academy.persist.change.ChangeType
+import academy.product.course.Course
 import academy.reactor.Reactor
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -10,18 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired
 class CourseProducerReactorService extends Reactor {
 
     @Autowired
-    AcademyCourseProducer courseProducer
+    CourseProducer courseProducer
 
     @Override
     void configure() {
-        on AcademyCourse, {
+        on Course, {
             types ChangeType.CREATED
 
             react {
                 courseProducer.createCourse(it.entity)
             }
         }
-        on AcademyCourse, {
+        on Course, {
             types ChangeType.UPDATED
 
             react {

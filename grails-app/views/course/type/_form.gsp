@@ -1,16 +1,16 @@
-<%@ page import="academy.product.course.AcademyCourseType" %>
+<%@ page import="academy.product.course.CourseType" %>
 
-<academyField:formField bean="${courseTypeInstance}"
-                   originalEntity="${AcademyCourseType}"
+<field:formField bean="${courseTypeInstance}"
+                   originalEntity="${CourseType}"
                    required="true"
                    field="tittle">
     <g:textField name="tittle" required="required" value="${courseTypeInstance?.tittle}"/>
-</academyField:formField>
+</field:formField>
 
-<academyField:formField bean="${courseTypeInstance}"
-                   originalEntity="${AcademyCourseType}"
+<field:formField bean="${courseTypeInstance}"
+                   originalEntity="${CourseType}"
                    required="true"
                    field="code">
     <g:textField name="code" required="required" value="${courseTypeInstance?.code}"/>
-</academyField:formField>
+</field:formField>
 

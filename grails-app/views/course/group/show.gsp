@@ -10,37 +10,37 @@
 
 <body>
 
-<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
+<buttons:buttonToolbar style="margin: 0 0 10px 10px">
 
-    <academyButtons:buttonGroup>
-        <academyButtons:index/>
-        <academyButtons:create/>
-        <academyButtons:edit id="${groupInstance.id}"/>
-    </academyButtons:buttonGroup>
+    <buttons:buttonGroup>
+        <buttons:index/>
+        <buttons:create/>
+        <buttons:edit id="${groupInstance.id}"/>
+    </buttons:buttonGroup>
 
-</academyButtons:buttonToolbar>
+</buttons:buttonToolbar>
 
 <div>
-    <academyMessages:showFlash flash="${flash}" bean="${[groupInstance]}"/>
+    <messages:showFlash flash="${flash}" bean="${[groupInstance]}"/>
 
     <div style="display: flex; padding: 10px 0 10px 0;">
 
         <div id="show-group" class="content scaffold-show" role="main">
             <h1>${entityName}: ${groupInstance.name}</h1>
 
-            <academyMessages:showFlash flash="${flash}" bean="${groupInstance}"/>
+            <messages:showFlash flash="${flash}" bean="${groupInstance}"/>
 
             <ol class="property-list course">
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyGroup.name.label"
+                <components:valOrAbsentWithLabel messageLabel="academyGroup.name.label"
                                                         value="${groupInstance.name}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyGroup.createdOn.label"
+                <components:valOrAbsentWithLabel messageLabel="academyGroup.createdOn.label"
                                                         value="${groupInstance.createdOn}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyGroup.type.label"
+                <components:valOrAbsentWithLabel messageLabel="academyGroup.type.label"
                                                         value="${message(code:  groupInstance.groupType)}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyGroup.maxStudentAmount.label"
+                <components:valOrAbsentWithLabel messageLabel="academyGroup.maxStudentAmount.label"
                                                         value="${message(code:  groupInstance.maxStudentAmount)}"/>
         </ol>
 

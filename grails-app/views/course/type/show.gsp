@@ -10,31 +10,29 @@
 
 <body>
 
-<academyButtons:buttonToolbar style="margin: 0 0 10px 10px">
+<buttons:buttonToolbar style="margin: 0 0 10px 10px">
 
-    <academyButtons:buttonGroup>
-        <academyButtons:index/>
-        <academyButtons:create/>
-        <academyButtons:edit id="${courseTypeInstance.id}"/>
-    </academyButtons:buttonGroup>
+    <buttons:buttonGroup>
+        <buttons:index/>
+        <buttons:create/>
+        <buttons:edit id="${courseTypeInstance.id}"/>
+    </buttons:buttonGroup>
 
-</academyButtons:buttonToolbar>
+</buttons:buttonToolbar>
 
 <div>
-    <academyMessages:showFlash flash="${flash}" bean="${[courseTypeInstance]}"/>
+    <messages:showFlash flash="${flash}" bean="${[courseTypeInstance]}"/>
 
     <div style="display: flex; padding: 10px 0 10px 0;">
 
         <div id="show-course" class="content scaffold-show" role="main">
             <h1>${entityName}: ${courseTypeInstance.tittle}</h1>
 
-            <academyMessages:showFlash flash="${flash}" bean="${courseTypeInstance}"/>
-
             <ol class="property-list course">
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyCourseType.tittle.label"
+                <components:valOrAbsentWithLabel messageLabel="courseType.tittle.label"
                                                         value="${courseTypeInstance.tittle}"/>
 
-                <academyComponents:valOrAbsentWithLabel messageLabel="academyCourseType.code.label"
+                <components:valOrAbsentWithLabel messageLabel="courseType.code.label"
                                                         value="${courseTypeInstance.code}"/>
             </ol>
 

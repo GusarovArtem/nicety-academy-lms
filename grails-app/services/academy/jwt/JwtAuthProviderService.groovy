@@ -1,6 +1,7 @@
 package academy.jwt
 
-import academy.user.AcademyUser
+
+import academy.user.User
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.BadCredentialsException
@@ -73,8 +74,8 @@ class JwtAuthProviderService implements AuthenticationProvider {
 
         try {
             if (jwtValidatorService.validate(token, email)) {
-                AcademyUser.withTransaction {
-                    final AcademyUser user = AcademyUser.findByEmail(email)
+                User.withTransaction {
+                    final User user = User.findByEmail(email)
 
                     authentication = new UsernamePasswordAuthenticationToken(user, null, user.authorities())
                     SecurityContextHolder.getContext().setAuthentication(authentication)
