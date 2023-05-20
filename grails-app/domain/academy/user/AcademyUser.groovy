@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 
-class User {
+class AcademyUser {
 
     String name
     String surname
@@ -36,7 +36,7 @@ class User {
             String login = value.trim()
 
             def notUnique
-            if (User.findAllByEmail(login).find { it.id != user.id }) {
+            if (AcademyUser.findAllByEmail(login).find { it.id != user.id }) {
                 notUnique = ['User.email.unique']
             }
             if (notUnique) {

@@ -1,4 +1,4 @@
-<%@ page import="academy.user.User; academy.user.User" %>
+<%@ page import="academy.user.AcademyUser; academy.user.AcademyUser" %>
 
 <field:formField bean="${userInstance}"
                    originalEntity="${User}"
@@ -33,7 +33,7 @@
 </field:formField>
 
 <field:formField bean="${userInstance}"
-                   originalEntity="${academy.user.User}"
+                   originalEntity="${academy.user.AcademyUser}"
                    field="location">
     <g:textField name="location" value="${userInstance?.location}"/>
 </field:formField>

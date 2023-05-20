@@ -1,9 +1,9 @@
 package academy.user.staff.service
 
-import academy.user.User
+import academy.user.AcademyUser
 import academy.user.UserType
 
-class Teacher extends User {
+class Teacher extends AcademyUser {
 
     {
         this.userType = UserType.TEACHER

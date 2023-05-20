@@ -2,9 +2,9 @@ package academy.user.staff.management
 
 
 import academy.user.UserType
-import academy.user.User
+import academy.user.AcademyUser
 
-class Manager extends User {
+class Manager extends AcademyUser {
 
     {
         this.userType = UserType.MANAGER

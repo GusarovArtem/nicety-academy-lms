@@ -1,9 +1,9 @@
 package academy.user.student
 
-import academy.user.User
+import academy.user.AcademyUser
 import academy.user.UserType
 
-class Student extends User {
+class Student extends AcademyUser {
 
     {
         this.userType = UserType.STUDENT

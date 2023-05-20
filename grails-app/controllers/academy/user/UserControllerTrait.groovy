@@ -22,7 +22,7 @@ trait UserControllerTrait implements ControllerTrait {
                        userInstanceList : userInstanceList], view: '/user/index'
     }
 
-    def _show(User userInstance) {
+    def _show(AcademyUser userInstance) {
         userInstance.clearErrors()
         render model: [userInstance: userInstance], view: '/user/show'
     }
@@ -32,7 +32,7 @@ trait UserControllerTrait implements ControllerTrait {
                 .newInstance(params)], view: '/user/create'
     }
 
-    def _save(User userInstance) {
+    def _save(AcademyUser userInstance) {
         if (!userInstance) {
             notFound()
             return
@@ -55,23 +55,23 @@ trait UserControllerTrait implements ControllerTrait {
     }
 
 
-    def _edit(User userInstance) {
+    def _edit(AcademyUser userInstance) {
         render model: [userInstance: userInstance], view: '/user/edit'
     }
 
-    def _selfEdit(User userInstance) {
+    def _selfEdit(AcademyUser userInstance) {
         render model: [userInstance: userInstance], view: '/user/self_edit'
     }
 
-    def _update(User userInstance) {
+    def _update(AcademyUser userInstance) {
         update(userInstance, "/user/edit")
     }
 
-    def _selfUpdate(User userInstance) {
+    def _selfUpdate(AcademyUser userInstance) {
         update(userInstance, "/user/self_edit")
     }
 
-    private update(User userInstance, view) {
+    private update(AcademyUser userInstance, view) {
         if (userInstance == null) {
             notFound()
             return

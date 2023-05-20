@@ -1,10 +1,10 @@
-<%@ page import="grails.util.GrailsNameUtils; academy.user.User" %>
+<%@ page import="grails.util.GrailsNameUtils; academy.user.AcademyUser" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
     <g:set var="entityMessageBase" value="${GrailsNameUtils.getPropertyName(userInstanceClass)}"/>
-    <g:set var="entityName" value="${message(code: "${entityMessageBase}.label", default: 'User')}"/>
+    <g:set var="entityName" value="${message(code: "${entityMessageBase}.label", default: 'AcademyUser')}"/>
     <title><g:message code="default.list.label" args="[message(code: entityMessageBase + '.dm.label')]"/></title>
 </head>
 

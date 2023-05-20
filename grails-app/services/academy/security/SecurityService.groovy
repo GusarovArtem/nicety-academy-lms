@@ -1,14 +1,15 @@
 package academy.security
 
-import academy.user.User
+
+import academy.user.AcademyUser
 
 class SecurityService {
 
     def springSecurityService
 
 
-    User currentUser() {
-        (User) springSecurityService.currentUser
+    AcademyUser currentUser() {
+        (AcademyUser) springSecurityService.currentUser
     }
 
 }

@@ -1,11 +1,11 @@
 package academy.user.fields
 
 import academy.user.SocialMedia
-import academy.user.User
+import academy.user.AcademyUser
 
 class UserSocialMedia implements Serializable {
 
-    User user
+    AcademyUser user
 
     SocialMedia socialMedia
 

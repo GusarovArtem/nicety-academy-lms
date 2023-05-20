@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityMessageBase" value="${GrailsNameUtils.getPropertyNameConvention(userInstance)}"/>
-    <g:set var="entityName" value="${message(code: "${entityMessageBase}.label", default: 'User')}"/>
+    <g:set var="entityName" value="${message(code: "${entityMessageBase}.label", default: 'AcademyUser')}"/>
     <title><g:message code="default.edit.label" args="[message(code: entityMessageBase + '.label')]"/></title>
 </head>
 

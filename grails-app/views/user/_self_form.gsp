@@ -1,7 +1,7 @@
-<%@ page import="academy.user.User; academy.user.User" %>
+<%@ page import="academy.user.AcademyUser; academy.user.AcademyUser" %>
 
 <field:formField bean="${userInstance}"
-                   originalEntity="${academy.user.User}"
+                   originalEntity="${academy.user.AcademyUser}"
                    required="true"
                    field="name">
     <g:textField name="name" required="required" value="${userInstance?.name}"/>

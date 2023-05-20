@@ -220,10 +220,10 @@ grails:
             providerNames: [ 'jwtAuthProviderService' ]
             userLookup:
                 usernamePropertyName: 'email'
-                userDomainClassName: 'academy.user.User'
-                authorityJoinClassName: 'academy.user.security.UserRole'
+                userDomainClassName: 'academy.user.AcademyUser'
+                authorityJoinClassName: 'academy.user.role.UserRole'
             authority:
-                className: 'academy.user.security.Role'
+                className: 'academy.user.role.Role'
             rememberMe:
                 cookieName: 'academyRememberMeCookie'
                 key: 'academyRememberMeKEY'

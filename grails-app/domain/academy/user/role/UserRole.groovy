@@ -1,10 +1,11 @@
 package academy.user.role
 
-import academy.user.User
+
+import academy.user.AcademyUser
 
 class UserRole implements Serializable {
 
-    User user
+    AcademyUser user
     Role role
 
     static mapping = {
@@ -16,12 +17,12 @@ class UserRole implements Serializable {
         role nullable: true
     }
 
-    UserRole(User user, Role role) {
+    UserRole(AcademyUser user, Role role) {
         this.user = user
         this.role = role
     }
 
-    static UserRole create(User user, boolean flush = false) {
+    static UserRole create(AcademyUser user, boolean flush = false) {
         def role = Role.findByAuthority(user.userType.role)
 
         new UserRole(user: user, role: role).save(flush: flush, insert: true)
