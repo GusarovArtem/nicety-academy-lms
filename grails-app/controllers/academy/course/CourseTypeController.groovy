@@ -2,7 +2,7 @@ package academy.course
 
 
 import academy.product.course.CourseType
-import academy.trait.ControllerTrait
+import academy.ControllerTrait
 import grails.gorm.transactions.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 

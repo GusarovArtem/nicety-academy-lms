@@ -1,6 +1,6 @@
 package academy
 
-import academy.utils.Collections
+import academy.util.construct.Collections
 
 
 class MessagesTagLib implements TagLibTrait  {

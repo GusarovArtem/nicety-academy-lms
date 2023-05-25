@@ -6,7 +6,7 @@ import org.grails.datastore.mapping.model.PersistentEntity
 import org.grails.datastore.mapping.model.types.Association
 
 import java.util.function.Supplier
-import static academy.utils.Collections.isClassIterable
+import static academy.util.construct.Collections.isClassIterable
 
 class DomainService {
 
